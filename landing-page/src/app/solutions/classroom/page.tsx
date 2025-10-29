@@ -37,24 +37,21 @@ const introductions = [
     description:
       "以“认知自我一探索职业一规划路径”为主线，融合学科知识、职业体验和决策工具的实践性课程体系。象导生涯利用智能教具、生涯游戏、线上信息库、大数据等数字化资源破解生涯教育困局，为学校打造工具实践课程、情景模拟课程、学科融合课程，帮助学生在真实场景中建立生涯决策能力。",
     image: "/images/solutions/classroom/intro/intro-1.png",
-    background:
-      "linear-gradient(180deg, #D6E8FF 7.09%, rgba(214, 232, 255, 0.20) 53.53%)",
+    className: "bg-[linear-gradient(180deg,#D6E8FF_7.09%,#FFF_53.53%)] sm:bg-[linear-gradient(180deg,#D6E8FF_7.09%,rgba(214,232,255,0.20)_53.53%)]",
   },
   {
     title: "生涯课堂平板",
     description:
       "以“认知自我一探索职业一规划路径”为主线，融合学科知识、职业体验和决策工具的实践性课程体系。象导生涯利用智能教具、生涯游戏、线上信息库、大数据等数字化资源破解生涯教育困局，为学校打造工具实践课程、情景模拟课程、学科融合课程，帮助学生在真实场景中建立生涯决策能力。",
     image: "/images/solutions/classroom/intro/intro-2.png",
-    background:
-      "linear-gradient(180deg, #BFF1FF 6.88%, rgba(191, 241, 255, 0.20) 54.69%)",
+    className: "bg-[linear-gradient(180deg,#BFF1FF_6.88%,#FFF_54.69%)] sm:bg-[linear-gradient(180deg,#BFF1FF_6.88%,rgba(191,241,255,0.20)_54.69%)]",
   },
   {
     title: "元宇宙探索系统",
     description:
       "以“认知自我一探索职业一规划路径”为主线，融合学科知识、职业体验和决策工具的实践性课程体系。象导生涯利用智能教具、生涯游戏、线上信息库、大数据等数字化资源破解生涯教育困局，为学校打造工具实践课程、情景模拟课程、学科融合课程，帮助学生在真实场景中建立生涯决策能力。",
     image: "/images/solutions/classroom/intro/intro-3.png",
-    background:
-      "linear-gradient(180deg, #9ED0FF 6.88%, rgba(158, 208, 255, 0.20) 54.69%)",
+    className: "bg-[linear-gradient(180deg,#9ED0FF_6.88%,rgba(158,208,255,0.20)_54.69%)] sm:bg-[linear-gradient(180deg,#9ED0FF_6.88%,rgba(158,208,255,0.20)_54.69%)]",
   },
 ];
 
@@ -80,7 +77,7 @@ export default function ClassroomPage() {
         />
         <SolutionIntroduction title="方案介绍" introductions={introductions} />
         <SolutionAdvantagesSection advantages={advantages} />
-        <CaseStudies />
+        <CaseStudies className="pb-20" />
       </div>
     </SolutionPageGuard>
   );

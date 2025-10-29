@@ -266,6 +266,11 @@
   .border-footer-border {
     border-color: var(--color-footer-border);
   }
+  .prose {
+    --tw-prose-bullets: lab(
+      7.78673% 1.82345 -15.0537
+    ); /* Your desired bullet color */
+  }
 }
 
 /* Timeline Animation Keyframes */
@@ -457,4 +462,9 @@
 
 .animate-pulse-slow {
   animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* override z index of overlay tencent captcha */
+.t-mask {
+  z-index: 123 !important;
 }

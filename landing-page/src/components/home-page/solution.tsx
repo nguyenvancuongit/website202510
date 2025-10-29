@@ -148,7 +148,7 @@ function SolutionCard({ solution, isExpanded, onHover }: SolutionCardProps) {
       className={cn("block", isExpanded ? "lg:col-span-2" : "lg:col-span-1")}
     >
       <motion.div
-        className="relative group cursor-pointer overflow-hidden rounded-2xl z-10 h-[369px]"
+        className="relative group cursor-pointer overflow-hidden rounded-2xl z-10 h-45 md:h-[369px]"
         style={{
           backgroundColor: "#1f2937",
         }}
@@ -226,7 +226,7 @@ function SolutionCard({ solution, isExpanded, onHover }: SolutionCardProps) {
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <motion.h3
-              className="font-bold mb-[47px] text-balance text-white text-xl md:text-3xl"
+              className="font-bold mb-3 md:mb-[37px] flex-grow text-balance text-white text-base md:text-3xl"
               style={{
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.8)",
               }}
@@ -237,7 +237,7 @@ function SolutionCard({ solution, isExpanded, onHover }: SolutionCardProps) {
             <AnimatePresence mode="wait">
               {isExpanded && (
                 <motion.p
-                  className="text-white max-w-[300px] leading-relaxed text-pretty text-base"
+                  className="text-white max-w-[300px] leading-relaxed text-pretty text-xs md:text-base"
                   style={{
                     textShadow: "1px 1px 3px rgba(0, 0, 0, 0.8)",
                   }}

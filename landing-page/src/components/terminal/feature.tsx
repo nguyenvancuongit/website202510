@@ -78,7 +78,7 @@ export default function Feature() {
   };
 
   return (
-    <section className="py-8 sm:py-12 md:py-14 lg:py-16 bg-white sm:bg-gradient-to-b sm:from-white/80 sm:to-[rgba(242,247,255,0.80)]">
+    <section className="pt-0 pb-10 sm:py-12 md:py-14 lg:py-16 bg-white sm:bg-gradient-to-b sm:from-white/80 sm:to-[rgba(242,247,255,0.80)]">
       {/* Desktop */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ProductTabs with fade-in from top animation */}

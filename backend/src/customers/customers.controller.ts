@@ -82,9 +82,11 @@ export class CustomersPublicController {
           ? SubmitSource.Tablet
           : SubmitSource.Desktop;
 
+    const userIp = req.ip || req.connection.remoteAddress || '127.0.0.1';
+
     return this.customersService.create({
       ...createCustomerDto,
       submitSource,
-    });
+    }, userIp);
   }
 }

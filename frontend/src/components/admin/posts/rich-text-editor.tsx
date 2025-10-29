@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu";
 import { Extension, mergeAttributes, Node } from "@tiptap/core";
+import CodeBlock from "@tiptap/extension-code-block";
 import { Color } from "@tiptap/extension-color";
 import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
@@ -11,7 +12,7 @@ import ListItem from "@tiptap/extension-list-item";
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import TextAlign from "@tiptap/extension-text-align";
-import { FontFamily, FontSize, TextStyle } from "@tiptap/extension-text-style";
+import { FontFamily, FontSize, LineHeight, TextStyle } from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -106,8 +107,8 @@ const FONT_SIZES = [
 ];
 
 const FONT_FAMILIES = [
-  { value: "Source Han Sans", label: "Source Han Sans" },
-  { value: "Alibaba PuHuiTi-R", label: "Alibaba PuHuiTi-R" },
+  { value: "sourceHanSans", label: "Source Han Sans" },
+  { value: "alibabaPuHuiTi", label: "Alibaba PuHuiTi-R" },
 ];
 
 const BULLET_LIST_STYLES = [
@@ -443,6 +444,7 @@ export function RichTextEditor({
   minHeight = "400px",
 }: RichTextEditorProps) {
   const { token } = useAuthStore();
+  const [linkText, setLinkText] = useState("");
   const [linkUrl, setLinkUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
@@ -488,6 +490,7 @@ export function RichTextEditor({
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
+      LineHeight,
       Underline,
       Color,
       TextStyle,
@@ -495,6 +498,11 @@ export function RichTextEditor({
       FontFamily,
       Highlight.configure({
         multicolor: true,
+      }),
+      CodeBlock.configure({
+        HTMLAttributes: {
+          class: "bg-gray-900 text-gray-100 rounded-lg p-4 font-mono text-sm overflow-x-auto",
+        },
       }),
       LineHeightExtension,
     ],
@@ -538,12 +546,38 @@ export function RichTextEditor({
   }, [editor, content]);
 
   const addLink = useCallback(() => {
-    if (linkUrl && editor) {
-      editor.chain().focus().setLink({ href: linkUrl }).run();
-      setLinkUrl("");
-      setShowLinkDialog(false);
+    if (!editor) return;
+
+    const url = linkUrl.trim();
+    const text = linkText.trim();
+
+    if (!url || !text) {
+      toast.error("请输入链接文本和链接地址");
+      return;
     }
-  }, [editor, linkUrl]);
+
+    // Insert text with link
+    editor
+      .chain()
+      .focus()
+      .insertContent({
+        type: "text",
+        text: text,
+        marks: [
+          {
+            type: "link",
+            attrs: {
+              href: url,
+            },
+          },
+        ],
+      })
+      .run();
+
+    setLinkText("");
+    setLinkUrl("");
+    setShowLinkDialog(false);
+  }, [editor, linkText, linkUrl]);
 
   const addImage = useCallback(() => {
     if (imageUrl && editor) {
@@ -703,23 +737,6 @@ export function RichTextEditor({
 
   return (
     <div className="border rounded-lg">
-      {/* Selected image highlight and editor-specific styles */}
-      <style jsx global>{`
-        .prose img.ProseMirror-selectednode {
-          outline: 2px solid #3b82f6; /* tailwind blue-600 */
-          border-radius: 0.5rem;
-        }
-        /* Bullet list styles */
-        .prose ul.list-disc {
-          list-style-type: disc;
-        }
-        .prose ul.list-circle {
-          list-style-type: circle;
-        }
-        .prose ul.list-square {
-          list-style-type: square;
-        }
-      `}</style>
       {/* Toolbar */}
       <div className="border-b p-2 flex flex-wrap gap-1 bg-gray-50">
         {/* Text Formatting */}
@@ -918,6 +935,7 @@ export function RichTextEditor({
         {/* Font Family */}
         <div className="flex gap-1 border-r pr-2 mr-2">
           <Select
+            defaultValue={FONT_FAMILIES[0].value}
             onValueChange={(value) => {
               editor.chain().focus().setFontFamily(value).run();
             }}
@@ -1075,9 +1093,9 @@ export function RichTextEditor({
           </Button>
           <Button
             type="button"
-            variant={editor.isActive("code") ? "default" : "ghost"}
+            variant={editor.isActive("codeBlock") ? "default" : "ghost"}
             size="sm"
-            onClick={() => editor.chain().focus().toggleCode().run()}
+            onClick={() => editor.chain().focus().toggleCodeBlock().run()}
           >
             <Code className="w-4 h-4" />
           </Button>
@@ -1222,28 +1240,53 @@ export function RichTextEditor({
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-80">
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <h4 className="font-medium">添加链接</h4>
-                <Input
-                  placeholder="输入链接地址"
-                  value={linkUrl}
-                  onChange={(e) => setLinkUrl(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      e.preventDefault();
-                      addLink();
-                    }
-                  }}
-                />
+                <div>
+                  <label className="text-sm text-gray-600 mb-1 block">
+                    链接文本
+                  </label>
+                  <Input
+                    placeholder="输入要显示的文本"
+                    value={linkText}
+                    onChange={(e) => setLinkText(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        addLink();
+                      }
+                    }}
+                  />
+                </div>
+                <div>
+                  <label className="text-sm text-gray-600 mb-1 block">
+                    链接地址
+                  </label>
+                  <Input
+                    placeholder="输入链接地址（如 https://example.com）"
+                    value={linkUrl}
+                    onChange={(e) => setLinkUrl(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        addLink();
+                      }
+                    }}
+                  />
+                </div>
                 <div className="flex gap-2">
                   <Button type="button" size="sm" onClick={addLink}>
-                    添加
+                    添加链接
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
                     size="sm"
-                    onClick={() => setShowLinkDialog(false)}
+                    onClick={() => {
+                      setLinkText("");
+                      setLinkUrl("");
+                      setShowLinkDialog(false);
+                    }}
                   >
                     取消
                   </Button>

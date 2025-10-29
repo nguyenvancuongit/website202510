@@ -61,7 +61,7 @@ const TestimonialsSection = ({ title, description }: Props) => {
         </motion.h2>
 
         <motion.div
-          className="text-medium-dark-blue-grey px-6 py-9 md:p-0 text-sm md:text-xl flex flex-col gap-6 font-normal tracking-[0] bg-[url('/images/solutions/guidance-center/testimonial-bg.png')] bg- bg-no-repeat md:bg-none"
+          className="text-medium-dark-blue-grey px-6 py-10 sm:py-9 md:p-0 text-sm md:text-xl flex flex-col gap-6 font-[350px] sm:font-normal tracking-[0] bg-[url('/images/solutions/guidance-center/testimonial-bg.svg')] sm:bg-[url('/images/solutions/guidance-center/testimonial-bg.png')] bg- bg-no-repeat md:bg-none"
           variants={itemVariants}
           transition={{ duration: 0.6, delay: 0.2 }}
           style={{
@@ -89,7 +89,7 @@ const TestimonialsSection = ({ title, description }: Props) => {
             ))
           ) : (
             <motion.span
-              className="leading-8.5 md:leading-[56px]"
+              className="leading-6 md:leading-[56px]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

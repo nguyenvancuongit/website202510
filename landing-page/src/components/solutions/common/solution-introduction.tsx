@@ -9,6 +9,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
 
 export interface SolutionIntroductionProps {
   title: string;
@@ -16,7 +17,8 @@ export interface SolutionIntroductionProps {
     title: string;
     description: string;
     image: string;
-    background: string;
+    className?: string;
+    background?: string;
   }[];
   description?: string;
 }
@@ -47,8 +49,8 @@ const SolutionIntroduction = ({
   description,
 }: SolutionIntroductionProps) => {
   return (
-    <div className="max-w-7xl mx-auto px-4 pb-20 md:pb-50">
-      <div className="mb-8 md:mb-30">
+    <div className="max-w-7xl mx-auto px-4 pb-20 md:pb-50 sm:pt-0 pt-2.5">
+      <div className="mb-8.5 md:mb-30">
         <motion.h2
           className="font-bold text-charcoal text-2xl md:text-[56px] tracking-[0] leading-normal"
           initial={{ opacity: 0, x: -60 }}
@@ -60,7 +62,7 @@ const SolutionIntroduction = ({
         </motion.h2>
         {description && (
           <motion.p
-            className="text-sm md:text-xl text-medium-dark-blue-grey mt-6"
+            className="text-sm md:text-xl leading-6 md:leading-normal font-normal text-medium-dark-blue-grey mt-3.5 sm:mt-6"
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -113,14 +115,14 @@ const SolutionCard = ({
 }) => {
   return (
     <Card
-      className="py-10 border-0 rounded-3xl h-full shadow-none"
+      className={cn("py-6 sm:py-10 border-0 rounded-3xl h-full shadow-none", solution.className)}
       style={{
         background: solution.background,
       }}
     >
-      <CardContent className="flex flex-col gap-3 md:gap-8 h-full">
-        <h3 className="font-medium text-[18px] md:text-[28px]">{solution.title}</h3>
-        <p className="text-sm md:text-base font-normal text-dark-blue-grey flex-grow">
+      <CardContent className="flex flex-col gap-3 md:gap-8 h-full sm:px-6 px-5">
+        <h3 className="font-medium text-[18px] md:text-[28px] text-charcoal">{solution.title}</h3>
+        <p className="text-sm md:text-base font-normal text-dark-blue-grey flex-grow h-auto min-h-[60px]">
           {solution.description}
         </p>
         <Image

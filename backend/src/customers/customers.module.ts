@@ -6,9 +6,10 @@ import {
 } from './customers.controller';
 import { PrismaModule } from '../database/prisma.module';
 import { OperationLogModule } from '../operation-logs/operation-log.module';
+import { CaptchaModule } from '../captcha/captcha.module';
 
 @Module({
-  imports: [PrismaModule, OperationLogModule],
+  imports: [PrismaModule, OperationLogModule, CaptchaModule],
   controllers: [CustomersController, CustomersPublicController],
   providers: [CustomersService],
   exports: [CustomersService],

@@ -36,7 +36,10 @@ build-linux:
 		--build-arg NEXT_PUBLIC_API_URL=$(NEXT_PUBLIC_API_URL) .
 	docker buildx build --platform linux/amd64 -t $(LANDING_PAGE_IMAGE) -f ./docker/Dockerfile.landing-page \
 		--build-arg NEXT_PUBLIC_API_URL=$(NEXT_PUBLIC_API_URL) \
-		--build-arg API_URL=$(NEXT_PUBLIC_API_URL) .
+		--build-arg API_URL=$(NEXT_PUBLIC_API_URL) \
+		--build-arg NEXT_PUBLIC_SITE_URL=$(NEXT_PUBLIC_SITE_URL) .
+		--build-arg NEXT_PUBLIC_TENCENT_CAPTCHA_APP_ID=$(NEXT_PUBLIC_TENCENT_CAPTCHA_APP_ID) \
+		--build-arg NEXT_PUBLIC_TENCENT_CAPTCHA_SECRET_KEY=$(NEXT_PUBLIC_TENCENT_CAPTCHA_SECRET_KEY) .
 
 # Build and push to Docker Hub
 build-and-push:
@@ -46,7 +49,9 @@ build-and-push:
 	docker buildx build --platform linux/amd64 -t $(LANDING_PAGE_IMAGE) -f ./docker/Dockerfile.landing-page \
 		--build-arg NEXT_PUBLIC_API_URL=$(NEXT_PUBLIC_API_URL) \
 		--build-arg NEXT_PUBLIC_SITE_URL=$(NEXT_PUBLIC_SITE_URL) \
-		--build-arg API_URL=$(NEXT_PUBLIC_API_URL) . --push
+		--build-arg API_URL=$(NEXT_PUBLIC_API_URL) \
+		--build-arg NEXT_PUBLIC_TENCENT_CAPTCHA_APP_ID=$(NEXT_PUBLIC_TENCENT_CAPTCHA_APP_ID) \
+		--build-arg NEXT_PUBLIC_TENCENT_CAPTCHA_SECRET_KEY=$(NEXT_PUBLIC_TENCENT_CAPTCHA_SECRET_KEY) . --push
 
 # Login to Docker Hub
 docker-login:
@@ -70,7 +75,9 @@ build-landing-page-linux:
 	docker buildx build --platform linux/amd64 -t $(LANDING_PAGE_IMAGE) -f ./docker/Dockerfile.landing-page \
 		--build-arg NEXT_PUBLIC_API_URL=$(NEXT_PUBLIC_API_URL) \
 		--build-arg NEXT_PUBLIC_SITE_URL=$(NEXT_PUBLIC_SITE_URL) \
-		--build-arg API_URL=$(NEXT_PUBLIC_API_URL) .
+		--build-arg API_URL=$(NEXT_PUBLIC_API_URL) \
+		--build-arg NEXT_PUBLIC_TENCENT_CAPTCHA_APP_ID=$(NEXT_PUBLIC_TENCENT_CAPTCHA_APP_ID) \
+		--build-arg NEXT_PUBLIC_TENCENT_CAPTCHA_SECRET_KEY=$(NEXT_PUBLIC_TENCENT_CAPTCHA_SECRET_KEY) .
 
 # Push individual services
 push-backend:

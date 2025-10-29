@@ -22,6 +22,12 @@ const meibeiHeHe = localFont({
   weight: "400",
 });
 
+const alibabaPuHuiTi = localFont({
+  src: "../../public/fonts/Alibaba-PuHuiTi-R.ttf",
+  variable: "--font-alibaba-puhuiti",
+  weight: "400",
+})
+
 export const metadata: Metadata = {
   title: "象导生涯",
   description:
@@ -47,7 +53,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sourceHanSansCN.className} ${meibeiHeHe.variable} antialiased relative`}>
+      <body className={`${sourceHanSansCN.className} ${meibeiHeHe.variable} ${alibabaPuHuiTi.variable} antialiased relative`}>
         <Providers>
           <Header />
           {children}

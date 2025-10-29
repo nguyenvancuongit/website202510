@@ -57,6 +57,7 @@
     "redis": "^4.7.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
+    "tencentcloud-sdk-nodejs": "^4.1.134",
     "uuid": "^11.1.0"
   },
   "devDependencies": {

@@ -71,4 +71,20 @@ export class CreateCustomerDto {
   @IsOptional()
   @MaxLength(255)
   title: string;
+
+  @IsString()
+  @IsNotEmpty()
+  captchaTicket: string;
+
+  @IsString()
+  @IsNotEmpty()
+  captchaRandstr: string;
+
+  @IsString()
+  @IsNotEmpty()
+  captchaAppId: string;
+
+  @IsString()
+  @IsNotEmpty()
+  appSecretKey: string;
 }

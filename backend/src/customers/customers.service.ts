@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -21,12 +22,14 @@ import type {
 } from '../common/config/constants';
 import { SubmitSource } from './customers.types';
 import { TZDate } from '@date-fns/tz';
+import { CaptchaService } from '../captcha/captcha.service';
 
 @Injectable()
 export class CustomersService {
   constructor(
     private prisma: PrismaService,
     private readonly operationLogService: OperationLogService,
+    private readonly captchaService: CaptchaService,
   ) { }
 
   async findAll(query: QueryCustomersDto, isExport = false) {
@@ -134,12 +137,31 @@ export class CustomersService {
 
   async create(
     createCustomerDto: CreateCustomerDto & { submitSource: SubmitSource },
+    userIp?: string,
   ) {
+
+    const { captchaTicket, captchaRandstr, captchaAppId, appSecretKey, ...customerData } = createCustomerDto;
+
+    // Verify captcha first
+    const isCaptchaValid = await this.captchaService.verifyCaptcha(
+      9, // Tencent Cloud Captcha type
+      userIp || '127.0.0.1',
+      captchaTicket,
+      captchaRandstr,
+      captchaAppId,
+      appSecretKey,
+    );
+
+    if (!isCaptchaValid) {
+      throw new BadRequestException('Captcha verification failed');
+    }
+
+    // Remove captcha fields before saving to database
     const customer = await this.prisma.customer.create({
       data: {
-        ...createCustomerDto,
+        ...customerData,
         status: CUSTOMER_STATUS.PENDING_FOLLOW_UP,
-      },
+      }
     });
     return customer;
   }

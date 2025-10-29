@@ -23,6 +23,7 @@ interface BannerProps {
   customClassNameText?: string;
   containerClassName?: string;
   className?: string;
+  objectPosition?: string;
 }
 
 // Animation variants for fade in from left
@@ -64,6 +65,7 @@ export default function Banner({
   customClassNameText = "",
   containerClassName = "",
   className: innerClassName = "",
+  objectPosition = "",
 }: BannerProps) {
   return (
     <section className="relative h-[466px] md:h-[660px]">
@@ -72,19 +74,22 @@ export default function Banner({
         alt={title}
         width={imgSize.width}
         height={imgSize.height}
-        className="absolute top-0 left-1/2 -translate-x-1/2 media inset-0 w-full h-full object-cover"
+        className="absolute top-0 left-1/2 -translate-x-1/2 media inset-0 h-full object-cover object-[70%_10px] sm:object-[0]"
+        style={{
+          objectPosition: objectPosition,
+        }}
       />
       {hasOverlay && (
         <div
-          className="absolute inset-0 z-[1]"
+          className="hidden sm:block absolute inset-0 z-[1]"
           style={{
             background: overlayColor,
           }}
         />
       )}
-      <div className={cn("max-w-7xl h-full mx-auto px-6 md:px-8 relative z-10 flex sm:items-center items-baseline", containerClassName)}>
+      <div className={cn("max-w-7xl h-full mx-auto box-border px-6 md:px-8 relative z-10 flex sm:items-center items-baseline", containerClassName)}>
         <motion.div
-          className={cn("h-full flex flex-col justify-between md:justify-center max-w-3xl py-15 sm:py-20", innerClassName)}
+          className={cn("h-full flex flex-col justify-between md:justify-center max-w-3xl pb-15 pt-14 sm:py-20", innerClassName)}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

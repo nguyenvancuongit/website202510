@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import Localfont from "next/font/local";
 
 import { Toaster } from "@/components/ui/sonner";
 import GuardProvider from "@/providers/guard-provider";
@@ -7,15 +7,17 @@ import { QueryProvider } from "@/providers/query-provider";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const alibabaPuHuiTi = Localfont({
+  src: "../../public/fonts/Alibaba-PuHuiTi-R.ttf",
+  variable: "--font-alibaba-puhuiti",
+  weight: "400",
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const sourceHanSans = Localfont({
+  src: "../../public/fonts/SourceHanSans-Regular.otf",
+  variable: "--font-source-han-sans",
+  weight: "400",
+})
 
 export const metadata: Metadata = {
   title: "管理面板",
@@ -33,7 +35,7 @@ export default function AdminLayout({
   return (
     <html lang="zh-CN">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-y-hidden`}
+        className={`${sourceHanSans.className} ${alibabaPuHuiTi.variable} antialiased overflow-y-hidden`}
       >
         <QueryProvider>
           <GuardProvider>{children}</GuardProvider>

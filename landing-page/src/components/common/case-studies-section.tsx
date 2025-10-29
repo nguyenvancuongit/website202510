@@ -56,8 +56,8 @@ export default function CaseStudiesSection({
   };
 
   return (
-    <section className={`${backgroundClassName} ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-50">
+    <section className={`pb-20 md:pb-50 ${backgroundClassName} ${className}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between mb-6 md:mb-12">
           <motion.h2
             initial={{ opacity: 0, x: -60 }}

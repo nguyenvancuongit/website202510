@@ -63,7 +63,7 @@ const SolutionAdvantagesSection = ({
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20 lg:pb-50">
       <motion.h2
-        className="font-bold text-charcoal text-2xl sm:text-4xl lg:text-[56px] md:text-[56px] tracking-[0] leading-normal mb-6 sm:mb-8 lg:mb-10"
+        className="font-bold text-charcoal text-2xl sm:text-4xl lg:text-[56px] md:text-[56px] tracking-[0] leading-normal mb-11 sm:mb-8 lg:mb-10"
         initial={{ opacity: 0, x: -60 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -81,23 +81,23 @@ const SolutionAdvantagesSection = ({
             loop: true,
           }}
           setApi={setApi}
-          className="w-full mb-6"
+          className="w-full mb-4.5 sm:mb-6"
         >
           <CarouselContent className="-ml-2">
             {advantages.map((advantage, index) => (
               <CarouselItem
                 key={index}
-                className="pl-2 basis-[70%]"
+                className="pl-0 basis-[80%]"
                 onClick={() => scrollToIndex(index)}
               >
                 <div className={cn(
                   "relative h-[250px] rounded-xl overflow-hidden transition-all duration-300",
-                  activeIndex === index ? "scale-115" : "scale-85 opacity-60"
+                  activeIndex === index ? "scale-100 rounded-md" : "scale-y-85 opacity-60 rounded-none"
                 )}>
                   <Image
                     alt={advantage.title}
                     src={advantage.image}
-                    className="object-cover"
+                    className="object-fill sm:object-cover"
                     fill
                     sizes="(max-width: 768px) 75vw"
                   />
@@ -124,17 +124,17 @@ const SolutionAdvantagesSection = ({
         </div>
 
         {/* Content Box */}
-        <div className="bg-white text-center rounded-xl px-6 pt-6">
+        <div className="bg-white text-center rounded-xl px-6 pt-7.5 sm:pt-6">
           <motion.div
             key={activeIndex}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <h3 className="font-bold text-xl text-charcoal mb-4">
+            <h3 className="font-medium sm:font-bold text-base sm:text-xl text-charcoal mb-4">
               {advantages[activeIndex].title}
             </h3>
-            <p className="font-normal text-medium-dark-blue-grey text-sm leading-6">
+            <p className="font-normal text-medium-dark-blue-grey text-sm sm:leading-6 leading-8">
               {advantages[activeIndex].description}
             </p>
           </motion.div>

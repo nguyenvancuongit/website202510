@@ -38,6 +38,7 @@ import {
 import { chinesePhoneRegExp, cn } from "@/lib/utils";
 import { createCustomer } from "@/services/customer.service";
 
+import { TencentCaptcha } from "../ui/captcha";
 import {
   Form,
   FormControl,
@@ -138,6 +139,11 @@ const cooperationFormSchema = z.object({
   province: z.string().min(1, "请选择省份"),
   city: z.string().min(1, "请选择城市"),
   district: z.string().optional(),
+  // Captcha fields
+  captchaTicket: z.string().min(1, "请完成安全验证"),
+  captchaRandstr: z.string().min(1, "请完成安全验证"),
+  captchaAppId: z.string().min(1, "Captcha App ID is required"),
+  appSecretKey: z.string().min(1, "App Secret Key is required"),
 });
 
 type CooperationFormData = z.infer<typeof cooperationFormSchema>;
@@ -164,6 +170,10 @@ export function CooperationFormModal({ children }: CooperationFormModalProps) {
       province: "",
       city: "",
       district: "",
+      captchaTicket: "",
+      captchaRandstr: "",
+      captchaAppId: process.env.NEXT_PUBLIC_TENCENT_CAPTCHA_APP_ID || "your_captcha_app_id_here",
+      appSecretKey: process.env.NEXT_PUBLIC_TENCENT_CAPTCHA_SECRET_KEY || "your_captcha_secret_key_here",
     },
   });
 
@@ -227,6 +237,10 @@ export function CooperationFormModal({ children }: CooperationFormModalProps) {
       cooperationTypes: [data.cooperationType], // Convert single value to array
       cooperationRequirements: data.cooperationRequirements,
       requestNote: data.requestNote || undefined,
+      captchaTicket: data.captchaTicket,
+      captchaRandstr: data.captchaRandstr,
+      captchaAppId: data.captchaAppId,
+      appSecretKey: data.appSecretKey,
     };
 
     createCustomerMutation.mutate(payload);
@@ -651,6 +665,35 @@ export function CooperationFormModal({ children }: CooperationFormModalProps) {
                         max={200}
                       />
                     </div>
+                  </FormItem>
+                )}
+              />
+
+              {/* Captcha */}
+              <FormField
+                control={form.control}
+                name="captchaTicket"
+                render={() => (
+                  <FormItem>
+                    <FormLabel className="gap-0 text-black font-medium">
+                      <span className="text-red-500">*</span>
+                      安全验证
+                    </FormLabel>
+                    <FormControl>
+                      <TencentCaptcha
+                        appId={form.getValues("captchaAppId")}
+                        onSuccess={(ticket, randstr) => {
+                          form.setValue("captchaTicket", ticket);
+                          form.setValue("captchaRandstr", randstr);
+                        }}
+                        onError={() => {
+                          form.setValue("captchaTicket", "");
+                          form.setValue("captchaRandstr", "");
+                        }}
+                        className="mt-3"
+                      />
+                    </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />

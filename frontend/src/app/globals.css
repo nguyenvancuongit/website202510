@@ -169,6 +169,14 @@
   }
 }
 
+@layer utilities {
+  .prose {
+    --tw-prose-bullets: lab(
+      7.78673% 1.82345 -15.0537
+    ); /* Your desired bullet color */
+  }
+}
+
 /* Custom Toast Styles */
 [data-sonner-toaster] {
   --normal-bg: #ffffff;

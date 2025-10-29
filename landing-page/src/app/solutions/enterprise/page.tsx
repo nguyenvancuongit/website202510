@@ -12,25 +12,22 @@ import TestimonialsSection from "@/components/solutions/common/testimonial-secti
 const intros: SolutionIntroductionProps["introductions"] = [
   {
     title: "岗位胜任力模型",
-    description: "为企业提供科学的人才评估与发展规划标准",
+    description: "为企业提供科学的人才评估与发展规划标准。",
     image: "/images/solutions/enterprise/intro/intro-1.png",
-    background:
-      "linear-gradient(180deg, #D6E8FF 7.09%, rgba(214, 232, 255, 0.20) 53.53%)",
+    className: "bg-[linear-gradient(180deg,#D6E8FF_7.09%,rgba(214,232,255,0.20)_53.53%)]",
   },
   {
     title: "人岗匹配",
     description: "帮助企业在选人、用人、培养全流程中精准四配员工潜能与岗位需求",
     image: "/images/solutions/enterprise/intro/intro-2.png",
-    background:
-      "linear-gradient(180deg, #BFF1FF 6.88%, rgba(191, 241, 255, 0.20) 54.69%)",
+    className: "bg-[linear-gradient(180deg,#BFF1FF_6.88%,rgba(191,241,255,0.20)_54.69%)]",
   },
   {
     title: "人才培养",
     description:
       "识别高潜人才，设计个性化培养方案，实现人才梯队的高效建设与长期发展。",
     image: "/images/solutions/enterprise/intro/intro-3.png",
-    background:
-      "linear-gradient(180deg, #9ED0FF 6.88%, rgba(158, 208, 255, 0.20) 54.69%)",
+    className: "bg-[linear-gradient(180deg,#9ED0FF_6.88%,rgba(158,208,255,0.20)_54.69%)]",
   },
 ];
 

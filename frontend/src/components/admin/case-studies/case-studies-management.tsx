@@ -81,9 +81,8 @@ export function CaseStudiesManagement() {
       ...prev,
       page: 1,
       search: filters.search || undefined,
-      category_id: filters.category_id
-        ? Number(filters.category_id)
-        : undefined,
+      category_id:
+        filters.category_id === "all" ? undefined : Number(filters.category_id),
     }));
   };
 

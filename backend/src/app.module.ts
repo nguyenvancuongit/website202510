@@ -26,6 +26,7 @@ import { RecruitmentPostsModule } from './recruitment-posts/recruitment-posts.mo
 import { ResumeApplicationsModule } from './resume-applications/resume-applications.module';
 import { RedisCacheService } from './cache/redis.service';
 import { AddressesModule } from './addresses/addresses.module';
+import { CaptchaModule } from './captcha/captcha.module';
 
 @Module({
   imports: [
@@ -55,6 +56,7 @@ import { AddressesModule } from './addresses/addresses.module';
     ResumeApplicationsModule,
     OperationLogModule, // Operation logging
     AddressesModule, // Address lookup (provinces, cities, districts)
+    CaptchaModule, // Captcha verification
   ],
   controllers: [AppController],
   providers: [AppService, RedisCacheService],

@@ -11,28 +11,25 @@ import TestimonialsSection from "@/components/solutions/common/testimonial-secti
 
 const intros: SolutionIntroductionProps["introductions"] = [
   {
-    title: "科学权威的量表工具",
+    title: "生涯课堂",
     description:
-      "精选科学权威的量表工具，涵盖职业兴趣、性格类型、价值观等维度，帮助教师全面了解学生特质。",
+      "智能化软硬件组合，帮助教师优化发展指导教学内容呈现，增进师生和生生之间的课堂协作、互动和分享",
     image: "/images/solutions/teacher-guidance/intro/intro-1.png",
-    background:
-      "linear-gradient(180deg, #D6E8FF 7.09%, rgba(214, 232, 255, 0.20) 53.53%)",
+    className: "bg-[linear-gradient(180deg,#D6E8FF_7.09%,rgba(214,232,255,0.20)_53.53%)]",
   },
   {
-    title: "丰富的课程资源",
+    title: "个体咨询",
     description:
-      "提供覆盖中学阶段的生涯教育课程资源包，帮助教师设计和实施多元化的生涯课程。",
+      "因应咨询辅导不同阶段的需求，平台为教师匹配相应的数字化量表和工具辅助教师高效开展生涯教育指导",
     image: "/images/solutions/teacher-guidance/intro/intro-2.png",
-    background:
-      "linear-gradient(180deg, #BFF1FF 6.88%, rgba(191, 241, 255, 0.20) 54.69%)",
+    className: "bg-[linear-gradient(180deg,#BFF1FF_6.88%,rgba(191,241,255,0.20)_54.69%)]",
   },
   {
-    title: "个性化指导方案",
+    title: "学业指导",
     description:
-      "根据学生的个性特征和发展需求，提供量身定制的生涯指导方案，帮助教师更好地支持学生的成长。",
+      "多种生涯探索测评量表，生涯决策工具，院校、专业和职业信息库，帮助学生更好地认识自我，认识外部世界，作出合理的生涯决策",
     image: "/images/solutions/teacher-guidance/intro/intro-3.png",
-    background:
-      "linear-gradient(180deg, #9ED0FF 6.88%, rgba(158, 208, 255, 0.20) 54.69%)",
+    className: "bg-[linear-gradient(180deg,#9ED0FF_6.88%,rgba(158,208,255,0.20)_54.69%)]",
   },
 ];
 
@@ -65,6 +62,8 @@ const TeacherGuidancePage = () => {
           title="教师生涯辅助解决方案"
           description="内置生涯测评量表和工具，为教师提供“导航式”指引"
           imageSrc="/images/solutions/teacher-guidance/banner.jpg"
+          objectPosition="40%"
+          customClassNameText="sm:w-full w-[240px]"
         />
         <TestimonialsSection
           title="方案背景"

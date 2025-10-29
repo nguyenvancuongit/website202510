@@ -36,9 +36,9 @@ export default function GuidanceCenterPage() {
         <Banner
           title="学生发展指导中心解决方案"
           description={'科技赋能，助力学生自我探索、拓展视野，实现“家校共育"'}
-          imageSrc="/images/solutions/guidance-center/banner.jpg"
-          textColor="white"
+          imageSrc="/images/solutions/guidance-center/banner.svg"
           hasOverlay
+          customClassNameText="sm:!text-white !text-[#070F1B]"
         />
         <TestimonialsSection
           title="方案背景"

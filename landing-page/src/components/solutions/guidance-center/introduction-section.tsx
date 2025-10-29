@@ -74,7 +74,7 @@ const GuidanceCenterIntroduction = () => {
       </motion.p>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8.5"
         variants={cardsContainerVariants}
         initial="hidden"
         whileInView="visible"
@@ -83,9 +83,9 @@ const GuidanceCenterIntroduction = () => {
         {introData.map((item, index) => (
           <motion.div
             key={index}
-            className="flex items-center gap-4 md:block rounded-sm md:rounded-2xl p-4 md:p-8 hover:shadow-md transition-shadow duration-300 text-center"
+            className="flex item-start sm:items-center gap-5 md:block rounded-none md:rounded-2xl p-4 md:p-8 hover:shadow-md transition-shadow duration-300 text-center"
             style={{
-              background: "linear-gradient(180deg, #ECF1FF 0%, #F3FCFF 100%)",
+              background: "linear-gradient(180deg, #FFF 0%, #F3F8FF 100%)",
             }}
             variants={cardVariants}
             transition={{ duration: 0.8, ease: "easeOut" }}
@@ -113,7 +113,7 @@ const GuidanceCenterIntroduction = () => {
               </h3>
 
               {/* Description */}
-              <p className="text-sm md:text-base text-medium-dark-blue-grey leading-relaxed">
+              <p className="text-[13px] md:text-base text-medium-dark-blue-grey leading-relaxed">
                 {item.description}
               </p>
             </div>
