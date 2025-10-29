@@ -1,0 +1,535 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           BigInt   @id @default(autoincrement())
+  username     String   @unique @db.VarChar(100)
+  passwordHash String   @map("password_hash") @db.VarChar(255)
+  email        String?  @unique @db.VarChar(150)
+  status       String   @default("active") @db.VarChar(20) // active | disabled
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  phone        String?  @unique @db.VarChar(20)
+  permissions  String[]
+
+  // Relations
+  corporateHonors             CorporateHonor[]      @relation
+  operationLogs               OperationLog[]
+  uploadedMedia               Media[]               @relation("MediaUploader")
+  createdLatestNews           LatestNew[]           @relation("LatestNewCreatedBy")
+  updatedLatestNews           LatestNew[]           @relation("LatestNewUpdatedBy")
+  createdRecruitmentPostTypes RecruitmentPostType[] @relation("RecruitmentPostTypeCreatedBy")
+  updatedRecruitmentPostTypes RecruitmentPostType[] @relation("RecruitmentPostTypeUpdatedBy")
+  createdRecruitmentPosts     RecruitmentPost[]     @relation("RecruitmentPostCreatedBy")
+  updatedRecruitmentPosts     RecruitmentPost[]     @relation("RecruitmentPostUpdatedBy")
+
+  @@map("users")
+}
+
+enum CategoryStatus {
+  enabled
+  disabled
+}
+
+enum CategoryType {
+  latestNew
+  product
+  solution
+  caseStudy
+}
+
+model Category {
+  id            BigInt         @id @default(autoincrement())
+  name          String         @db.VarChar(255)
+  slug          String         @db.VarChar(255)
+  order         Int            @default(1)
+  status        CategoryStatus @default(enabled)
+  type          CategoryType   @default(latestNew) @map("type")
+  publishedPost Int            @default(0) @map("published_post")
+  createdAt     DateTime       @default(now()) @map("created_at")
+  updatedAt     DateTime       @updatedAt @map("updated_at")
+
+  // Relations
+  latestNews  LatestNew[]
+  caseStudies CaseStudy[]
+  products    Product[]
+  solutions   Solution[]
+
+  @@map("categories")
+}
+
+model Image {
+  id            BigInt   @id @default(autoincrement())
+  url           String   @db.VarChar(500)
+  altText       String?  @map("alt_text") @db.VarChar(255)
+  caption       String?  @db.VarChar(255)
+  sortOrder     Int      @default(0) @map("sort_order")
+  isPrimary     Boolean  @default(false) @map("is_primary")
+  imageableId   BigInt   @map("imageable_id")
+  imageableType String   @map("imageable_type") @db.VarChar(100)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  // Relations (polymorphic)
+
+  @@map("images")
+}
+
+enum BannerStatus {
+  enabled
+  disabled
+}
+
+model Banner {
+  id            BigInt       @id @default(autoincrement())
+  title         String?      @db.VarChar(255)
+  webMediaId    BigInt?      @unique @map("web_media_id")
+  mobileMediaId BigInt?      @unique @map("mobile_media_id")
+  linkUrl       String?      @map("link_url") @db.VarChar(500)
+  sortOrder     Int          @default(0) @map("sort_order")
+  status        BannerStatus @default(enabled)
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+
+  webMedia    Media? @relation("BannerWebMedia", fields: [webMediaId], references: [id])
+  mobileMedia Media? @relation("BannerMobileMedia", fields: [mobileMediaId], references: [id])
+
+  @@map("banners")
+}
+
+model FriendLink {
+  id        BigInt   @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  url       String   @db.VarChar(500)
+  sortOrder Int      @default(0) @map("sort_order")
+  status    Int      @default(1) // 1: enable | 0: disabled
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("friend_links")
+}
+
+model Customer {
+  id                      BigInt   @id @default(autoincrement())
+  name                    String   @db.VarChar(255)
+  email                   String?  @db.VarChar(255)
+  phone                   String?  @db.VarChar(50)
+  company                 String?  @db.VarChar(255)
+  address                 String?  @db.VarChar(255)
+  cooperationTypes        Int[]    @default([]) @map("cooperation_types")
+  cooperationRequirements Int[]    @default([]) @map("cooperation_requirements")
+  submitSource            Int      @default(0) @map("submit_source") // 1: mobile | 0: desktop
+  title                   String?  @db.VarChar(255)
+  requestNote             String?  @map("request_note") @db.Text
+  status                  Int      @default(1) // 1: active | 0: inactive
+  createdAt               DateTime @default(now()) @map("created_at")
+  updatedAt               DateTime @updatedAt @map("updated_at")
+
+  @@map("customers")
+}
+
+model SystemSetting {
+  id        BigInt   @id @default(autoincrement())
+  key       String   @unique @db.VarChar(255)
+  value     String   @db.Text
+  type      String   @default("string") @db.VarChar(50) // string | number | boolean | json
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("system_settings")
+}
+
+model Hashtag {
+  id        BigInt   @id @default(autoincrement())
+  name      String   @unique @db.VarChar(100)
+  status    Int      @default(1) // 1: active | 0: disabled
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  postHashtags PostHashtag[]
+
+  @@map("hashtags")
+}
+
+model PostHashtag {
+  id        BigInt @id @default(autoincrement())
+  postId    BigInt @map("post_id")
+  hashtagId BigInt @map("hashtag_id")
+
+  // Relations
+  hashtag Hashtag @relation(fields: [hashtagId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, hashtagId])
+  @@map("post_hashtags")
+}
+
+enum MediaType {
+  image
+  video
+  audio
+  document
+}
+
+model Media {
+  id        BigInt    @id @default(autoincrement())
+  name      String    @db.VarChar(255)
+  path      String    @db.VarChar(500)
+  type      MediaType
+  size      Int // size in bytes
+  altText   String?   @map("alt_text") @db.VarChar(255)
+  caption   String?   @db.VarChar(255)
+  uploadBy  BigInt?   @map("upload_by")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  uploader        User?            @relation("MediaUploader", fields: [uploadBy], references: [id])
+  webBanner       Banner?          @relation("BannerWebMedia")
+  mobileBanner    Banner?          @relation("BannerMobileMedia")
+  mobileLatestNew LatestNew?       @relation("LatestNewMobileMedia")
+  webLatestNew    LatestNew?       @relation("LatestNewWebMedia")
+  corporateHonors CorporateHonor[]
+  webCaseStudy    CaseStudy?       @relation("CaseStudyWebMedia")
+  mobileCaseStudy CaseStudy?       @relation("CaseStudyMobileMedia")
+  customerLogo    CaseStudy?       @relation("CaseStudyCustomerLogo")
+  productBanners  Product[]        @relation("ProductBannerMedia")
+  solutionBanners Solution[]       @relation("SolutionBannerMedia")
+  sectionImages   Section[]        @relation("SectionImageMedia")
+  subItemImages   SectionSubItem[] @relation("SubItemImageMedia")
+  subItemCtaIcons SectionSubItem[] @relation("SubItemCtaIconMedia")
+
+  @@map("medias")
+}
+
+enum ClientStatus {
+  pending
+  active
+  disabled
+}
+
+model Client {
+  id                       String       @id @default(uuid())
+  phoneNumber              String?      @unique @map("phone_number") @db.VarChar(20)
+  fullName                 String?      @map("full_name") @db.VarChar(255)
+  email                    String       @unique @db.VarChar(150)
+  passwordHash             String?      @map("password_hash") @db.VarChar(255)
+  status                   ClientStatus @default(pending)
+  lastLoginTime            DateTime?    @map("last_login_time")
+  emailVerificationCode    String?      @map("email_verification_code") @db.VarChar(6)
+  emailVerificationExpires DateTime?    @map("email_verification_expires")
+  passwordResetToken       String?      @unique @map("password_reset_token") @db.VarChar(255)
+  passwordResetExpires     DateTime?    @map("password_reset_expires")
+  createdAt                DateTime     @default(now()) @map("created_at")
+  updatedAt                DateTime     @updatedAt @map("updated_at")
+
+  @@map("clients")
+}
+
+model CorporateHonor {
+  id           BigInt   @id @default(autoincrement())
+  name         String   @db.VarChar(255)
+  imageId      BigInt?  @map("image_id")
+  obtainedDate DateTime @map("obtained_date")
+  authorId     BigInt   @map("author_id")
+  sortOrder    Int      @default(0) @map("sort_order")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  author User   @relation(fields: [authorId], references: [id])
+  image  Media? @relation(fields: [imageId], references: [id])
+
+  @@map("corporate_honors")
+}
+
+enum LatestNewStatus {
+  draft
+  published
+  unpublished
+}
+
+model LatestNew {
+  id                     BigInt          @id @default(autoincrement())
+  categoryId             BigInt          @map("category_id")
+  title                  String          @unique @db.VarChar(255)
+  slug                   String          @unique @db.VarChar(255)
+  status                 LatestNewStatus
+  description            String          @db.Text
+  content                String          @db.Text
+  featured               Boolean         @default(false)
+  publishedDate          DateTime?       @map("published_date")
+  webThumbnailMediaId    BigInt?         @unique @map("web_thumbnail_media_id")
+  mobileThumbnailMediaId BigInt?         @unique @map("mobile_thumbnail_media_id")
+  createdAt              DateTime        @default(now()) @map("created_at")
+  updatedAt              DateTime        @updatedAt @map("updated_at")
+  createdBy              BigInt?         @map("created_by")
+  updatedBy              BigInt?         @map("updated_by")
+
+  webThumbnail    Media?    @relation("LatestNewWebMedia", fields: [webThumbnailMediaId], references: [id])
+  mobileThumbnail Media?    @relation("LatestNewMobileMedia", fields: [mobileThumbnailMediaId], references: [id])
+  category        Category? @relation(fields: [categoryId], references: [id])
+  createdByUser   User?     @relation("LatestNewCreatedBy", fields: [createdBy], references: [id])
+  updatedByUser   User?     @relation("LatestNewUpdatedBy", fields: [updatedBy], references: [id])
+
+  @@map("latest_news")
+}
+
+enum CaseStudyStatus {
+  draft
+  published
+  unpublished
+}
+
+enum ProductStatus {
+  draft
+  published
+  unpublished
+}
+
+enum SolutionStatus {
+  draft
+  published
+  unpublished
+}
+
+model CaseStudy {
+  id                     BigInt          @id @default(autoincrement())
+  categoryId             BigInt          @map("category_id")
+  title                  String          @unique @db.VarChar(255)
+  slug                   String          @unique @db.VarChar(255)
+  status                 CaseStudyStatus
+  content                String?         @db.Text
+  featured               Boolean         @default(false)
+  webThumbnailMediaId    BigInt?         @unique @map("web_thumbnail_media_id")
+  mobileThumbnailMediaId BigInt?         @unique @map("mobile_thumbnail_media_id")
+  customerName           String?         @map("customer_name") @db.VarChar(255)
+  customerLogoMediaId    BigInt?         @unique @map("customer_logo_media_id")
+  keyHighlights          String[]        @map("key_highlights") // String array
+  highlightDescription   String?         @map("highlight_description") @db.Text
+  customerFeedback       String?         @map("customer_feedback") @db.Text
+  createdAt              DateTime        @default(now()) @map("created_at")
+  updatedAt              DateTime        @updatedAt @map("updated_at")
+  createdBy              BigInt?         @map("created_by")
+  updatedBy              BigInt?         @map("updated_by")
+
+  webThumbnail    Media?    @relation("CaseStudyWebMedia", fields: [webThumbnailMediaId], references: [id])
+  mobileThumbnail Media?    @relation("CaseStudyMobileMedia", fields: [mobileThumbnailMediaId], references: [id])
+  customerLogo    Media?    @relation("CaseStudyCustomerLogo", fields: [customerLogoMediaId], references: [id])
+  category        Category? @relation(fields: [categoryId], references: [id])
+
+  @@map("case_studies")
+}
+
+enum OperationStatus {
+  success
+  failed
+}
+
+enum SectionImagePosition {
+  top
+  left
+  bottom
+  right
+}
+
+enum SectionType {
+  intro
+  featured_grid
+  icon_list
+  tab_content
+  section_with_subtitle_image
+  card_list
+  image_to_text
+  featured_list_to_image
+}
+
+model OperationLog {
+  id               BigInt          @id @default(autoincrement())
+  userId           BigInt          @map("user_id")
+  operationType    String          @map("operation_type") @db.VarChar(100) // e.g., "create", "update", "delete", "export"
+  module           String          @db.VarChar(100) // e.g., "资讯文章管理", "Banner信息列表"
+  operationDesc    String          @map("operation_desc") @db.VarChar(500) // Description of the operation
+  targetType       String?         @map("target_type") @db.VarChar(100) // Type of entity operated on
+  targetId         String?         @map("target_id") @db.VarChar(100) // ID of the entity operated on
+  ipAddress        String?         @map("ip_address") @db.VarChar(45) // IPv4 or IPv6 address
+  requestParams    Json?           @map("request_params") // Request parameters as JSON
+  status           OperationStatus @default(success)
+  createdAt        DateTime        @default(now()) @map("created_at")
+
+  // Relations
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([module])
+  @@index([operationType])
+  @@index([status])
+  @@index([createdAt])
+  @@index([ipAddress])
+  @@map("operation_logs")
+}
+
+model Product {
+  id            BigInt        @id @default(autoincrement())
+  categoryId    BigInt        @map("category_id")
+  name          String        @db.VarChar(255)
+  slug          String        @unique @db.VarChar(255)
+  description   String?       @db.Text
+  sortOrder     Int           @default(0) @map("sort_order")
+  status        ProductStatus @default(draft)
+  featured      Boolean       @default(false)
+  bannerMediaId BigInt?       @map("banner_media_id")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  // Relations
+  category    Category  @relation(fields: [categoryId], references: [id])
+  bannerMedia Media?    @relation("ProductBannerMedia", fields: [bannerMediaId], references: [id])
+  sections    Section[]
+
+  @@map("products")
+}
+
+model Solution {
+  id            BigInt         @id @default(autoincrement())
+  categoryId    BigInt         @map("category_id")
+  name          String         @db.VarChar(255)
+  slug          String         @unique @db.VarChar(255)
+  sortOrder     Int            @default(0) @map("sort_order")
+  status        SolutionStatus @default(draft)
+  featured      Boolean        @default(false)
+  bannerMediaId BigInt?        @map("banner_media_id")
+  createdAt     DateTime       @default(now()) @map("created_at")
+  updatedAt     DateTime       @updatedAt @map("updated_at")
+
+  // Relations
+  category    Category  @relation(fields: [categoryId], references: [id])
+  bannerMedia Media?    @relation("SolutionBannerMedia", fields: [bannerMediaId], references: [id])
+  sections    Section[]
+
+  @@map("solutions")
+}
+
+model Section {
+  id                      BigInt      @id @default(autoincrement())
+  productId               BigInt?     @map("product_id")
+  solutionId              BigInt?     @map("solution_id")
+  sectionType             SectionType @map("section_type")
+  title                   String?     @db.VarChar(255)
+  description             String?     @db.Text
+  subTitle                String?     @map("sub_title") @db.VarChar(255)
+  subDescription          String?     @map("sub_description") @db.Text
+  sectionImageMediaId     BigInt?     @map("section_image_media_id")
+  sectionImageTitle       String?     @map("section_image_title") @db.VarChar(255)
+  sectionImageDescription String?     @map("section_image_description") @db.Text
+  ctaText                 String      @default("合作咨询") @map("cta_text") @db.VarChar(100)
+  ctaLink                 String?     @map("cta_link") @db.VarChar(500)
+  sortOrder               Int         @default(0) @map("sort_order")
+  isActive                Boolean     @default(true) @map("is_active")
+  createdAt               DateTime    @default(now()) @map("created_at")
+  updatedAt               DateTime    @updatedAt @map("updated_at")
+
+  // Relations
+  product         Product?         @relation(fields: [productId], references: [id])
+  solution        Solution?        @relation(fields: [solutionId], references: [id])
+  sectionImage    Media?           @relation("SectionImageMedia", fields: [sectionImageMediaId], references: [id])
+  sectionSubItems SectionSubItem[]
+
+  @@map("sections")
+}
+
+model SectionSubItem {
+  id                  BigInt   @id @default(autoincrement())
+  sectionId           BigInt   @map("section_id")
+  ctaText             String?  @map("cta_text") @db.VarChar(100)
+  ctaIconMediaId      BigInt?  @map("cta_icon_media_id")
+  title               String?  @db.VarChar(255)
+  description         String?  @db.Text
+  subItemImageMediaId BigInt?  @map("sub_item_image_media_id")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  section      Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  ctaIcon      Media?  @relation("SubItemCtaIconMedia", fields: [ctaIconMediaId], references: [id], onDelete: SetNull)
+  SubItemImage Media?  @relation("SubItemImageMedia", fields: [subItemImageMediaId], references: [id], onDelete: SetNull)
+
+  @@map("section_sub_items")
+}
+
+enum RecruitmentPostTypeStatus {
+  enabled
+  disabled
+}
+
+model RecruitmentPostType {
+  id        BigInt                    @id @default(autoincrement())
+  name      String                    @db.VarChar(255)
+  slug      String                    @unique @db.VarChar(255)
+  status    RecruitmentPostTypeStatus @default(enabled)
+  createdBy BigInt?                   @map("created_by")
+  updatedBy BigInt?                   @map("updated_by")
+  createdAt DateTime                  @default(now()) @map("created_at")
+  updatedAt DateTime                  @updatedAt @map("updated_at")
+
+  // Relations
+  recruitmentPosts RecruitmentPost[]
+  createdByUser    User?             @relation("RecruitmentPostTypeCreatedBy", fields: [createdBy], references: [id])
+  updatedByUser    User?             @relation("RecruitmentPostTypeUpdatedBy", fields: [updatedBy], references: [id])
+
+  @@map("recruitment_post_types")
+}
+
+enum RecruitmentPostStatus {
+  draft
+  published
+  unpublished
+}
+
+enum JobType {
+  full_time
+  internship
+}
+
+model RecruitmentPost {
+  id                    BigInt                @id @default(autoincrement())
+  jobTitle              String                @map("job_title") @db.VarChar(255)
+  slug                  String                @unique @db.VarChar(255)
+  jobDescription        String                @map("job_description") @db.Text
+  recruitmentPostTypeId BigInt                @map("recruitment_post_type_id")
+  jobType               JobType               @default(full_time) @map("job_type")
+  status                RecruitmentPostStatus @default(draft)
+  createdBy             BigInt?               @map("created_by")
+  updatedBy             BigInt?               @map("updated_by")
+  createdAt             DateTime              @default(now()) @map("created_at")
+  updatedAt             DateTime              @updatedAt @map("updated_at")
+
+  // Relations
+  recruitmentPostType RecruitmentPostType @relation(fields: [recruitmentPostTypeId], references: [id])
+  createdByUser       User?               @relation("RecruitmentPostCreatedBy", fields: [createdBy], references: [id])
+  updatedByUser       User?               @relation("RecruitmentPostUpdatedBy", fields: [updatedBy], references: [id])
+  resumeApplications  ResumeApplication[]
+
+  @@map("recruitment_posts")
+}
+
+model ResumeApplication {
+  id                BigInt   @id @default(autoincrement())
+  recruitmentPostId BigInt   @map("recruitment_post_id")
+  resumeFilePath    String?  @map("resume_file_path") @db.VarChar(500)
+  resumeFileName    String?  @map("resume_file_name") @db.VarChar(255)
+  ipAddress         String?  @map("ip_address") @db.VarChar(45)
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  recruitmentPost RecruitmentPost @relation(fields: [recruitmentPostId], references: [id])
+
+  @@map("resume_applications")
+}

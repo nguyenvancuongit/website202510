@@ -1,0 +1,7 @@
+# Ignore all backup files but keep the directory structure
+*.zip
+*.csv
+*.sql
+
+# Keep this file to track the directory
+!.gitkeep

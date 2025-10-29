@@ -1,0 +1,44 @@
+.wrap {
+  width: 100%;
+  max-width: 100%;
+}
+.slider {
+  position: relative;
+  overflow: hidden;
+  height: 65vh;
+  background: #fff;
+  /* border-radius: 10px; */
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide img {
+  display: block;
+}
+.slide.has-pieces img {
+  display: none;
+}
+
+/* piece container sits on top of slide image */
+.pieces {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.piece {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 0;
+  height: 0;
+} /* navigation */
+
+@media (min-width: 768px) {
+  .slider {
+    min-height: 100vh;
+  }
+}
