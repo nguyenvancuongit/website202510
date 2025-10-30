@@ -1,13 +1,20 @@
 "use client";
-import { SVGProps, useState } from "react";
+
+import { SVGProps, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { useMedia } from "@/hooks/use-media";
 import { cn } from "@/lib/utils";
 import { CaseStudy } from "@/services/case-study.service";
 
-import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import {
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+} from "../ui/carousel";
 import { GradientButton } from "../ui/gradient-button";
 
 import SectionHeader from "./section-header";
@@ -80,7 +87,10 @@ const BottomGradientIcon = (props: SVGProps<SVGSVGElement>) => {
 
 const ClientCasesSection = ({ caseStudies }: Props) => {
   const [hoveredItem, setHoveredItem] = useState<number>(0);
+  const [api, setApi] = useState<CarouselApi>();
+
   const { isMobile } = useMedia();
+  const router = useRouter();
   const itemSizes = [
     "w-[197px] h-[290px] md:h-[434px] md:w-[295px]",
     "w-[176px] h-[244px] md:h-[365px] md:w-[264px]",
@@ -90,6 +100,21 @@ const ClientCasesSection = ({ caseStudies }: Props) => {
   ];
 
   const selectedItem = caseStudies[hoveredItem];
+
+  useEffect(() => {
+    if (!api || !isMobile) {
+      return;
+    }
+
+    // Set initial active index
+    setHoveredItem(api.selectedScrollSnap());
+
+    // Listen to select events to update active index
+    api.on("select", () => {
+      setHoveredItem(api.selectedScrollSnap());
+    });
+  }, [api, isMobile]);
+
   return (
     <section className="max-w-7xl mx-auto md:px-6 py-30 md:py-20 bg-white ">
       <div className="relative pb-20 md:pb-50">
@@ -103,9 +128,7 @@ const ClientCasesSection = ({ caseStudies }: Props) => {
 
       <div className="max-w-7xl mx-auto md:px-4">
         <div className="mb-12">
-          <Carousel
-            className="w-full"
-          >
+          <Carousel className="w-full" setApi={isMobile ? setApi : undefined}>
             <CarouselContent className="-ml-2 md:-ml-4">
               {caseStudies?.map((item, index) => (
                 <CarouselItem
@@ -118,7 +141,11 @@ const ClientCasesSection = ({ caseStudies }: Props) => {
                       itemSizes[index % 5]
                     )}
                     onMouseOver={() => setHoveredItem(index)}
-                    onClick={() => setHoveredItem(index)}
+                    onClick={() =>
+                      router.push(
+                        `/case-study/${item.category.slug}/${item.slug}`
+                      )
+                    }
                   >
                     <Image
                       src={item.web_thumbnail.path || "/placeholder.svg"}
@@ -160,7 +187,9 @@ const ClientCasesSection = ({ caseStudies }: Props) => {
               {/* Large number */}
               <div className="flex-shrink-0 flex md:block items-center gap-2">
                 <span className="text-3xl md:w-auto text-center md:text-8xl md:font-bold leading-none pb-2 px-1.5 pt-1 md:p-0 bg-[#1D8BF8] md:bg-transparent text-white md:!text-charcoal font-meibei-he-he">
-                  {hoveredItem + 1 > 9 ? hoveredItem + 1 : `0${hoveredItem + 1}`}
+                  {hoveredItem + 1 > 9
+                    ? hoveredItem + 1
+                    : `0${hoveredItem + 1}`}
                 </span>
                 <h3 className="block md:hidden text-2xl md:font-bold text-dark-blue-grey leading-tight md:border-b md:border-charcoal w-fit">
                   {selectedItem.title}
