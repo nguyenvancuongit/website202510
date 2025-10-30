@@ -23,8 +23,7 @@ const HeroSection = () => {
             delay: 0.2,
           }}
         >
-          已经过200+学校验证
-          可为您定制专属解决方案
+          已经过200+学校验证 可为您定制专属解决方案
         </motion.h2>
 
         {/* Description - fade in from left */}
@@ -39,7 +38,7 @@ const HeroSection = () => {
             delay: 0.4,
           }}
         >
-          专属顾问一个工作日内为你解答
+          专属顾问一个工作日内为您解答
         </motion.p>
 
         {/* Button - fade in from bottom */}
@@ -55,7 +54,7 @@ const HeroSection = () => {
         >
           <CooperationFormModal>
             <GradientButton className="mx-auto cursor-pointer text-sm sm:text-lg">
-              <span >立即咨询</span>
+              <span>立即咨询</span>
               <Image
                 alt="system guide"
                 src="/icons/system-guide-icon.svg"

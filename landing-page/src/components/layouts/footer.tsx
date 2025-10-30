@@ -17,18 +17,22 @@ import { staticProductMapping, staticSolutionMapping } from "./constants";
 export function Footer() {
   const { data: friendLinks = [] } = useFriendLinks();
   const { data: productPages = [] } = useProductPages();
-  const { config: solutionPages = [], checkVisibleSolutionPages } = useSolutionPages();
+  const { config: solutionPages = [], checkVisibleSolutionPages } =
+    useSolutionPages();
   const pathname = usePathname();
   const { isMobile } = useMedia();
 
   // Generate dynamic footer sections
   const getFooterSections = () => {
-
     // Create dynamic product items
-    const productItems = productPages.map((product) => staticProductMapping[product.key]).filter(Boolean);
+    const productItems = productPages
+      .map((product) => staticProductMapping[product.key])
+      .filter(Boolean);
 
     // Create dynamic solution items (already sorted by the hook)
-    const solutionItems = solutionPages.map((solution) => staticSolutionMapping[solution.key]).filter(Boolean);
+    const solutionItems = solutionPages
+      .map((solution) => staticSolutionMapping[solution.key])
+      .filter(Boolean);
 
     return [
       {
@@ -60,7 +64,17 @@ export function Footer() {
     <footer className="relative w-full bg-footer-bg text-white py-16 md:rounded-t-[96px]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
-          {/* Company Info */}
+          {/* Company Info
+              <div className="flex items-center space-x-2">
+                <Image
+                  src="/images/icons/phone.svg"
+                  alt="phone"
+                  width={18}
+                  height={18}
+                />
+                <span>020-87318866</span>
+              </div>
+            */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
               <Image
@@ -74,21 +88,12 @@ export function Footer() {
             <div className="hidden md:block space-y-3 text-white">
               <div className="flex items-center space-x-2">
                 <Image
-                  src="/images/icons/phone.svg"
-                  alt="phone"
-                  width={18}
-                  height={18}
-                />
-                <span>020-87318866</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Image
                   src="/images/icons/mail.svg"
                   alt="mail"
                   width={18}
                   height={15}
                 />
-                <span>mailto:support@myfellas.net</span>
+                <span>Business@vianstats.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Image
@@ -98,7 +103,8 @@ export function Footer() {
                   height={18}
                 />
                 <span>
-                  广州市越秀区广州大道中289号南方间创汇4号生产综合楼501室
+                  Room 501, Building 4, Nanfang Tongchuanghui, 289 Guangzhou
+                  Avenue Middle, Yuexiu District, Guangzhou, Guangdong Province
                 </span>
               </div>
             </div>
@@ -110,13 +116,9 @@ export function Footer() {
                   <Link
                     key={itemIndex}
                     href={item.href}
-                    className={cn(
-                      " cursor-pointer transition-colors block",
-                      {
-                        "font-medium":
-                          isActive,
-                      }
-                    )}
+                    className={cn(" cursor-pointer transition-colors block", {
+                      "font-medium": isActive,
+                    })}
                   >
                     {item.label}
                   </Link>
@@ -128,39 +130,40 @@ export function Footer() {
           </div>
 
           {/* Desktop Dynamic Links Columns */}
-          {!isMobile && footerSections.map((section, index) => (
-            <div key={index}>
-              <h4 className="text-white font-medium mb-[26px]">
-                {section.title}
-              </h4>
-              <div className="space-y-3 text-footer-blue text-sm">
-                {section.items.map((item, itemIndex) => {
-                  const isActive = pathname.startsWith(item.href);
-                  if (section.key === "solution") {
-                    // For solution pages, use the custom check function
-                    if (!checkVisibleSolutionPages(item.href)) {
-                      return null; // Skip rendering this item if not visible
+          {!isMobile &&
+            footerSections.map((section, index) => (
+              <div key={index}>
+                <h4 className="text-white font-medium mb-[26px]">
+                  {section.title}
+                </h4>
+                <div className="space-y-3 text-footer-blue text-sm">
+                  {section.items.map((item, itemIndex) => {
+                    const isActive = pathname.startsWith(item.href);
+                    if (section.key === "solution") {
+                      // For solution pages, use the custom check function
+                      if (!checkVisibleSolutionPages(item.href)) {
+                        return null; // Skip rendering this item if not visible
+                      }
                     }
-                  }
-                  return (
-                    <Link
-                      key={itemIndex}
-                      href={item.href}
-                      className={cn(
-                        "hover:text-white cursor-pointer transition-colors block ",
-                        {
-                          "text-white font-medium border-l-2 border-white pl-2":
-                            isActive,
-                        }
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                })}
+                    return (
+                      <Link
+                        key={itemIndex}
+                        href={item.href}
+                        className={cn(
+                          "hover:text-white cursor-pointer transition-colors block ",
+                          {
+                            "text-white font-medium border-l-2 border-white pl-2":
+                              isActive,
+                          }
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
 
           {/* Mobile Dynamic Links Grid */}
           <div className="md:hidden grid grid-cols-2 gap-8">
@@ -185,8 +188,7 @@ export function Footer() {
                         className={cn(
                           "text-sm cursor-pointer transition-colors block ",
                           {
-                            "text-white font-medium":
-                              isActive,
+                            "text-white font-medium": isActive,
                           }
                         )}
                       >
@@ -201,9 +203,10 @@ export function Footer() {
 
           <Separator className="block md:hidden bg-footer-border" />
 
-
           {/* Mobile Contact Information */}
-          <p className="block md:hidden text-white font-medium text-lg">联系我们</p>
+          <p className="block md:hidden text-white font-medium text-lg">
+            联系我们
+          </p>
           <div className="block md:hidden space-y-5 text-white">
             <div className="flex items-center space-x-2">
               <Image
@@ -238,16 +241,18 @@ export function Footer() {
 
           {/* Follow Us Section with QR Codes */}
           <div>
-            <h4 className="hidden md:block text-white font-medium mb-4">关注我们</h4>
+            <h4 className="hidden md:block text-white font-medium mb-4">
+              关注我们
+            </h4>
             <div className="flex space-x-4">
               <div className="text-center">
                 <Image
                   src="/images/qr/wechat.png"
-                  alt="微信服务号"
+                  alt="官方公众号"
                   width={100}
                   height={100}
                 />
-                <p className="text-white text-xs">微信服务号</p>
+                <p className="text-white text-xs">官方公众号</p>
               </div>
               <div className="text-center">
                 <Image
@@ -295,7 +300,10 @@ export function Footer() {
               >
                 法律声明与隐私政策
               </Link>
-              <Separator className="bg-footer-border h-3" orientation="vertical" />
+              <Separator
+                className="bg-footer-border h-3"
+                orientation="vertical"
+              />
               <Link
                 className="hover:text-white text-footer-border text-sm text-center"
                 href="/sitemap"
@@ -316,7 +324,10 @@ export function Footer() {
               >
                 法律声明与隐私政策
               </Link>
-              <Separator className="bg-footer-border h-3" orientation="vertical" />
+              <Separator
+                className="bg-footer-border h-3"
+                orientation="vertical"
+              />
               <Link
                 className="hover:text-white text-footer-border text-sm text-center"
                 href="/sitemap"
@@ -325,7 +336,7 @@ export function Footer() {
               </Link>
             </div>
             <p className="text-footer-border text-sm text-center mt-7">
-              版权所有：广东数字工程研究院有限公司
+              版权所有：纬英数字科技（广州）有限公司
             </p>
             <p className="text-footer-border text-sm text-center">
               ICP备案：000000000号

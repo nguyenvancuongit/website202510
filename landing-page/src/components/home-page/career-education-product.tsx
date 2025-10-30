@@ -34,9 +34,9 @@ const serviceCategories: ServiceCategory[] = [
     title: "学生发展指导智慧平台",
   },
   {
-    id: "device",
-    icon: "/images/career-education/smart.svg",
-    title: "生涯探索智能设备",
+    id: "consulting",
+    icon: "/images/career-education/card.svg",
+    title: "企业数字化咨询服务",
   },
   {
     id: "training",
@@ -44,9 +44,9 @@ const serviceCategories: ServiceCategory[] = [
     title: "生涯培训与活动",
   },
   {
-    id: "consulting",
-    icon: "/images/career-education/card.svg",
-    title: "企业数字化咨询服务",
+    id: "device",
+    icon: "/images/career-education/smart.svg",
+    title: "生涯探索智能设备",
   },
 ];
 
@@ -160,7 +160,7 @@ const productSystemsByCategory: Record<string, ProductSystem[]> = {
       id: "training-4",
       title: "企业参访活动",
       description:
-        "组织学生前往各行业企业进行实地观察，了解未来就业方向、岗位职责、薪资水平等，帮助学生进一步明晰生涯发展方向。",
+        "组织学生前往各行业、企业进行实地观察、了解未来就业方向、岗位职责、薪资水平等，帮助学生进一步明晰生涯发展方向。",
       bgColor: "linear-gradient(180deg, #9ED0FF 6.88%, #FFF 54.69%)",
       image: "/images/career-education/training/image4.png",
       alt: "Student Camp",
@@ -301,7 +301,7 @@ export default function CareerEducationProduct({
     // simple color presets per index for UI accent
     textColor:
       ["text-blue-600", "text-cyan-600", "text-purple-600", "text-indigo-600"][
-      index
+        index
       ] || "text-blue-600",
     categoryId: cat.id,
   }));
@@ -375,8 +375,9 @@ export default function CareerEducationProduct({
         {/* Tab Navigation */}
         <div
           ref={tabsContainerRef}
-          className={`relative flex sm:flex-wrap sm:justify-center gap-3 md:gap-4 mb-10 md:mb-16 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
+          className={`relative flex sm:flex-wrap sm:justify-center gap-3 md:gap-4 mb-10 md:mb-16 transition-all duration-1000 delay-300 ${
+            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
         >
           {/* Moving active pill */}
           <div
@@ -413,8 +414,9 @@ export default function CareerEducationProduct({
                   className="w-8 h-8"
                 />
                 <span
-                  className={`text-sm md:text-xl ${isActive ? "text-[#1C88F9]" : "text-[#1D2129]"
-                    }`}
+                  className={`text-sm md:text-xl ${
+                    isActive ? "text-[#1C88F9]" : "text-[#1D2129]"
+                  }`}
                 >
                   {tab.title}
                 </span>
@@ -448,7 +450,7 @@ export default function CareerEducationProduct({
                     <h3 className="text-lg md:text-2xl font-medium text-dark-blue-grey mb-3 md:mb-6">
                       {card.title}
                     </h3>
-                    <p className="text-medium-dark-blue-grey text-sm md:text-base leading-relaxed mb-6 md:mb-12">
+                    <p className="text-medium-dark-blue-grey text-sm md:text-base leading-relaxed mb-6 md:mb-12 text-justify">
                       {card.description}
                     </p>
                     <div className="w-full h-40 sm:h-48 md:h-52 rounded-xl overflow-hidden bg-white/50 border border-white/60">

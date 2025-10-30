@@ -594,7 +594,7 @@ export class SystemSettingsService {
       terminal: {
         enabled: true,
         order: 2,
-        name: '智慧生涯自助探索终端',
+        name: '智能生涯自助探索终端',
         description: '助力学生课余自助探索',
         slug: 'terminal'
       },
@@ -867,7 +867,7 @@ export class SystemSettingsService {
             enabled: true,
             order: 4,
             title: '企业参访活动',
-            description: '组织学生前往各行业企业进行实地观察，了解未来就业方向、岗位职责、薪资水平等，帮助学生进一步明晰生涯发展方向。',
+            description: '组织学生前往各行业、企业进行实地观察、了解未来就业方向、岗位职责、薪资水平等，帮助学生进一步明晰生涯发展方向。',
           },
           {
             id: 'training-5',

@@ -103,7 +103,7 @@ async function main() {
     terminal: {
       enabled: true,
       order: 2,
-      name: '智慧生涯自助探索终端',
+      name: '智能生涯自助探索终端',
       description: '助力学生课余自助探索',
       slug: 'terminal'
     },
