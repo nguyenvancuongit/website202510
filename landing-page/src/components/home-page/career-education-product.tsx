@@ -375,9 +375,7 @@ export default function CareerEducationProduct({
         {/* Tab Navigation */}
         <div
           ref={tabsContainerRef}
-          className={`relative flex sm:flex-wrap sm:justify-center gap-3 md:gap-4 mb-10 md:mb-16 transition-all duration-1000 delay-300 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`relative flex sm:flex-wrap sm:justify-center gap-3 md:gap-4 mb-10 md:mb-16 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           {/* Moving active pill */}
           <div

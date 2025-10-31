@@ -201,9 +201,7 @@ function SolutionCard({ solution, isExpanded, onHover }: SolutionCardProps) {
               }}
               animate={{
                 opacity: 1,
-                background: isMobile
-                  ? "linear-gradient(90deg, #091D36 14.68%, rgba(0, 50, 141, 0.00) 64.55%)"
-                  : "linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.05) 100%)",
+                background: isMobile ? "linear-gradient(90deg, #091D36 14.68%, rgba(0, 50, 141, 0.00) 64.55%)" : "linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.05) 100%)",
               }}
               exit={{
                 opacity: 0,

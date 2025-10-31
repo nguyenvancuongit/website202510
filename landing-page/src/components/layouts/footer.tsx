@@ -28,9 +28,7 @@ export function Footer() {
     const productItems = productPages.map((product) => staticProductMapping[product.key]).filter(Boolean);
 
     // Create dynamic solution items (already sorted by the hook)
-    const solutionItems = solutionPages
-      .map((solution) => staticSolutionMapping[solution.key])
-      .filter(Boolean);
+    const solutionItems = solutionPages.map((solution) => staticSolutionMapping[solution.key]).filter(Boolean);
 
     return [
       {
@@ -117,8 +115,8 @@ export function Footer() {
                     className={cn(
                       " cursor-pointer transition-colors block",
                       {
-                      "font-medium":
-                        isActive,
+                        "font-medium":
+                          isActive,
                       }
                     )}
                   >
@@ -132,40 +130,39 @@ export function Footer() {
           </div>
 
           {/* Desktop Dynamic Links Columns */}
-          {!isMobile &&
-            footerSections.map((section, index) => (
-              <div key={index}>
-                <h4 className="text-white font-medium mb-[26px]">
-                  {section.title}
-                </h4>
-                <div className="space-y-3 text-footer-blue text-sm">
-                  {section.items.map((item, itemIndex) => {
-                    const isActive = pathname.startsWith(item.href);
-                    if (section.key === "solution") {
-                      // For solution pages, use the custom check function
-                      if (!checkVisibleSolutionPages(item.href)) {
-                        return null; // Skip rendering this item if not visible
-                      }
+          {!isMobile && footerSections.map((section, index) => (
+            <div key={index}>
+              <h4 className="text-white font-medium mb-[26px]">
+                {section.title}
+              </h4>
+              <div className="space-y-3 text-footer-blue text-sm">
+                {section.items.map((item, itemIndex) => {
+                  const isActive = pathname.startsWith(item.href);
+                  if (section.key === "solution") {
+                    // For solution pages, use the custom check function
+                    if (!checkVisibleSolutionPages(item.href)) {
+                      return null; // Skip rendering this item if not visible
                     }
-                    return (
-                      <Link
-                        key={itemIndex}
-                        href={item.href}
-                        className={cn(
-                          "hover:text-white cursor-pointer transition-colors block ",
-                          {
-                            "text-white font-medium border-l-2 border-white pl-2":
-                              isActive,
-                          }
-                        )}
-                      >
-                        {item.label}
-                      </Link>
-                    );
-                  })}
-                </div>
+                  }
+                  return (
+                    <Link
+                      key={itemIndex}
+                      href={item.href}
+                      className={cn(
+                        "hover:text-white cursor-pointer transition-colors block ",
+                        {
+                          "text-white font-medium border-l-2 border-white pl-2":
+                            isActive,
+                        }
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
-            ))}
+            </div>
+          ))}
 
           {/* Mobile Dynamic Links Grid */}
           <div className="md:hidden grid grid-cols-2 gap-8">
@@ -206,6 +203,7 @@ export function Footer() {
 
           <Separator className="block md:hidden bg-footer-border" />
 
+          
           {/* Mobile Contact Information */}
           <p className="block md:hidden text-white font-medium text-lg">联系我们</p>
           <div className="block md:hidden space-y-5 text-white">
