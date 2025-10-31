@@ -301,7 +301,7 @@ export default function CareerEducationProduct({
     // simple color presets per index for UI accent
     textColor:
       ["text-blue-600", "text-cyan-600", "text-purple-600", "text-indigo-600"][
-        index
+      index
       ] || "text-blue-600",
     categoryId: cat.id,
   }));

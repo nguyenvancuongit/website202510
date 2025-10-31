@@ -32,7 +32,8 @@ const solutions = [
   {
     id: 3,
     title: "大规模筛查",
-    description: "开展大规模筛查，预警学生潜在心理风险与生涯发展滞后问题。",
+    description:
+      "开展大规模筛查，预警学生潜在心理风险与生涯发展滞后问题。",
     image: "/images/solutions/solution-3.jpg",
     href: "/solutions/university-city",
   },
@@ -41,7 +42,7 @@ const solutions = [
     title: "教师生涯咨询指导",
     description: "丰富多元的生涯教学资源包，助力教师高效备课，驱动生涯教育高质量发展",
     image: "/images/solutions/solution-4.png",
-    href: "/solutions/teacher-guidance",
+    href: "/solutions/teacher-guidance"
   },
   {
     id: 5,

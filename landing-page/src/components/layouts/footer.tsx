@@ -17,17 +17,15 @@ import { staticProductMapping, staticSolutionMapping } from "./constants";
 export function Footer() {
   const { data: friendLinks = [] } = useFriendLinks();
   const { data: productPages = [] } = useProductPages();
-  const { config: solutionPages = [], checkVisibleSolutionPages } =
-    useSolutionPages();
+  const { config: solutionPages = [], checkVisibleSolutionPages } = useSolutionPages();
   const pathname = usePathname();
   const { isMobile } = useMedia();
 
   // Generate dynamic footer sections
   const getFooterSections = () => {
+
     // Create dynamic product items
-    const productItems = productPages
-      .map((product) => staticProductMapping[product.key])
-      .filter(Boolean);
+    const productItems = productPages.map((product) => staticProductMapping[product.key]).filter(Boolean);
 
     // Create dynamic solution items (already sorted by the hook)
     const solutionItems = solutionPages
@@ -116,9 +114,13 @@ export function Footer() {
                   <Link
                     key={itemIndex}
                     href={item.href}
-                    className={cn(" cursor-pointer transition-colors block", {
-                      "font-medium": isActive,
-                    })}
+                    className={cn(
+                      " cursor-pointer transition-colors block",
+                      {
+                      "font-medium":
+                        isActive,
+                      }
+                    )}
                   >
                     {item.label}
                   </Link>
@@ -188,7 +190,8 @@ export function Footer() {
                         className={cn(
                           "text-sm cursor-pointer transition-colors block ",
                           {
-                            "text-white font-medium": isActive,
+                            "text-white font-medium":
+                              isActive,
                           }
                         )}
                       >
@@ -204,9 +207,7 @@ export function Footer() {
           <Separator className="block md:hidden bg-footer-border" />
 
           {/* Mobile Contact Information */}
-          <p className="block md:hidden text-white font-medium text-lg">
-            联系我们
-          </p>
+          <p className="block md:hidden text-white font-medium text-lg">联系我们</p>
           <div className="block md:hidden space-y-5 text-white">
             <div className="flex items-center space-x-2">
               <Image
@@ -241,9 +242,7 @@ export function Footer() {
 
           {/* Follow Us Section with QR Codes */}
           <div>
-            <h4 className="hidden md:block text-white font-medium mb-4">
-              关注我们
-            </h4>
+            <h4 className="hidden md:block text-white font-medium mb-4">关注我们</h4>
             <div className="flex space-x-4">
               <div className="text-center">
                 <Image
@@ -300,10 +299,7 @@ export function Footer() {
               >
                 法律声明与隐私政策
               </Link>
-              <Separator
-                className="bg-footer-border h-3"
-                orientation="vertical"
-              />
+              <Separator className="bg-footer-border h-3" orientation="vertical" />
               <Link
                 className="hover:text-white text-footer-border text-sm text-center"
                 href="/sitemap"
@@ -324,10 +320,7 @@ export function Footer() {
               >
                 法律声明与隐私政策
               </Link>
-              <Separator
-                className="bg-footer-border h-3"
-                orientation="vertical"
-              />
+              <Separator className="bg-footer-border h-3" orientation="vertical" />
               <Link
                 className="hover:text-white text-footer-border text-sm text-center"
                 href="/sitemap"
