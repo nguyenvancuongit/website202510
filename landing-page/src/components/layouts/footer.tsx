@@ -203,7 +203,7 @@ export function Footer() {
 
           <Separator className="block md:hidden bg-footer-border" />
 
-          
+
           {/* Mobile Contact Information */}
           <p className="block md:hidden text-white font-medium text-lg">联系我们</p>
           <div className="block md:hidden space-y-5 text-white">
