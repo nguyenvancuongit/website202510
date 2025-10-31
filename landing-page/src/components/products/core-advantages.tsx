@@ -56,7 +56,7 @@ export default function CoreAdvantages() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.0, ease: "easeOut" }}
-          className="font-bold text-charcoal text-2xl md:text-[56px] tracking-[0] leading-normal mb-5 sm:mb-16"
+          className="font-bold text-charcoal text-2xl md:text-[56px] tracking-[0] leading-normal mb-16"
         >
           核心优势
         </motion.h2>
@@ -66,7 +66,7 @@ export default function CoreAdvantages() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="grid md:grid-cols-3 sm:gap-20 gap-5"
+          className="grid md:grid-cols-3 sm:gap-20 gap-10"
         >
           {advantages.map((advantage, index) => (
             <motion.div
@@ -95,7 +95,7 @@ export default function CoreAdvantages() {
           ))}
         </motion.div>
 
-        <div className="sm:mt-40 mt-20">
+        <div className="sm:mt-40 mt-10">
           <motion.h2
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}

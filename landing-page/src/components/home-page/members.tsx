@@ -152,7 +152,7 @@ const MemberSection = () => {
         />
       </div>
       <div
-        className="flex flex-col items-center space-y-4 p-4 sm:p-8 w-full"
+        className="flex flex-col items-center space-y-4 p-4 sm:p-8 w-full sm:h-auto h-[500px]"
         style={{
           backgroundImage: 'url("/images/members-bg.png")',
         }}

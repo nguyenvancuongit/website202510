@@ -218,11 +218,7 @@ const ApplicationModalContent = ({
           </SheetTitle>
         </SheetHeader>
         <div
-          className='space-y-4 pt-6 px-4'
-          style={{
-            background:
-              "linear-gradient(180deg, #C1E3FF 0.02%, #E1F8FF 8.7%, #FFF 19.08%, #FFF 99.98%)",
-          }}
+          className='space-y-4 pt-6 px-4 bg-[linear-gradient(180deg,#C1E3FF_0.02%,#E1F8FF_8.7%,#FFF_19.08%,#FFF_99.98%)] sm:h-auto h-full'
         >
           <div className='flex items-center justify-between'>
             <h3 className='text-lg font-semibold text-charcoal'>投递职位</h3>
@@ -236,7 +232,7 @@ const ApplicationModalContent = ({
             </Button>
           </div>
           {/* Job Title */}
-          <div className='flex items-center gap-2 text-lg'>
+          <div className='flex items-center gap-2 text-lg sm:mb-0 mb-10'>
             <label className='text-medium-dark-blue-grey font-normal'>
               职位名称:
             </label>
@@ -278,6 +274,7 @@ const ModalContent = ({
     <>
       <div className='mt-6'>
         <label className='block text-base font-medium text-gray-700 mb-3'>
+          <span className="sm:hidden inline-block text-[#FE3306]">*</span>
           上传附件
         </label>
 
@@ -299,12 +296,12 @@ const ModalContent = ({
                 请上传您的个人简历材料
               </div>
               <div className='text-sm text-vibrant-blue'>
-                仅限word、pdf、zip格式文件
+                仅限word、pdf、zip、格式文件
               </div>
             </label>
           </div>
         ) : (
-          <div className='border border-[#B5CDF0] min-h-40 flex flex-col items-center justify-center rounded-lg p-8 text-center hover:border-gray-400 transition-colors'>
+          <div className='border border-[#B5CDF0] min-h-40 sm:max-h-max max-h-[375px] flex flex-col items-center justify-center rounded-lg p-8 text-center hover:border-gray-400 transition-colors'>
             <div className='flex flex-col items-center gap-2'>
               <div className='flex items-center gap-3'>
                 <svg

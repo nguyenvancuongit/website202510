@@ -60,7 +60,17 @@ export function Footer() {
     <footer className="relative w-full bg-footer-bg text-white py-16 md:rounded-t-[96px]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
-          {/* Company Info */}
+          {/* Company Info
+              <div className="flex items-center space-x-2">
+                <Image
+                  src="/images/icons/phone.svg"
+                  alt="phone"
+                  width={18}
+                  height={18}
+                />
+                <span>020-87318866</span>
+              </div>
+            */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
               <Image
@@ -74,21 +84,12 @@ export function Footer() {
             <div className="hidden md:block space-y-3 text-white">
               <div className="flex items-center space-x-2">
                 <Image
-                  src="/images/icons/phone.svg"
-                  alt="phone"
-                  width={18}
-                  height={18}
-                />
-                <span>020-87318866</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Image
                   src="/images/icons/mail.svg"
                   alt="mail"
                   width={18}
                   height={15}
                 />
-                <span>mailto:support@myfellas.net</span>
+                <span>Business@vianstats.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Image
@@ -98,7 +99,7 @@ export function Footer() {
                   height={18}
                 />
                 <span>
-                  广州市越秀区广州大道中289号南方间创汇4号生产综合楼501室
+                  广东省广州市越秀区广州大道中289号南方同创汇4号楼501室
                 </span>
               </div>
             </div>
@@ -243,11 +244,11 @@ export function Footer() {
               <div className="text-center">
                 <Image
                   src="/images/qr/wechat.png"
-                  alt="微信服务号"
+                  alt="官方公众号"
                   width={100}
                   height={100}
                 />
-                <p className="text-white text-xs">微信服务号</p>
+                <p className="text-white text-xs">官方公众号</p>
               </div>
               <div className="text-center">
                 <Image
@@ -325,7 +326,7 @@ export function Footer() {
               </Link>
             </div>
             <p className="text-footer-border text-sm text-center mt-7">
-              版权所有：广东数字工程研究院有限公司
+              版权所有：纬英数字科技（广州）有限公司
             </p>
             <p className="text-footer-border text-sm text-center">
               ICP备案：000000000号

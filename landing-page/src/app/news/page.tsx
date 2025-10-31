@@ -21,6 +21,10 @@ export default function HomePage() {
     <div className="min-h-fit sm:min-h-screen bg-[#ffffff]">
       <NewsHero
         title={"新闻中心"}
+        classNameTextTitle="!text-2xl mb-0"
+        classNameTextDescription="!text-sm w-3/4"
+        classNameImage="!w-32 !h-32"
+        className="py-8"
         description={
           <>
             <p>感谢您对纬英科技·象导生涯的关注！</p>

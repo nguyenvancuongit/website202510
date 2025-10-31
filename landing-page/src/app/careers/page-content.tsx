@@ -11,12 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import CompactPagination from "@/components/ui/compact-pagination";
 import { Input } from "@/components/ui/input";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { EmptyState } from "@/components/ui/states";
 import { cn } from "@/lib/utils";
 import {
@@ -38,9 +33,7 @@ export default function CareersContent() {
   const [activeJobIndex, setActiveJobIndex] = useState<number | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // Initialize state from URL params
-  const [searchTerm, setSearchTerm] = useState(
-    searchParams.get("search") || ""
-  );
+  const [searchTerm, setSearchTerm] = useState(searchParams.get("search") || "");
   const [queryTerm, setQueryTerm] = useState(searchParams.get("search") || "");
   const [selectedCategories, setSelectedCategories] = useState<string[]>(() => {
     const categories = searchParams.get("categories");
@@ -58,9 +51,9 @@ export default function CareersContent() {
   const getPreviewText = (html: string, maxLen = 120) => {
     const text = html
       ? html
-          .replace(/<[^>]*>/g, "")
-          .replace(/\s+/g, " ")
-          .trim()
+        .replace(/<[^>]*>/g, "")
+        .replace(/\s+/g, " ")
+        .trim()
       : "";
     return text.length > maxLen ? `${text.slice(0, maxLen)}…` : text;
   };
@@ -69,7 +62,7 @@ export default function CareersContent() {
   const { data: jobCategories = [] } = useQuery({
     queryKey: ["job-categories"],
     queryFn: () => getJobCategories(),
-    select: (data) => [{ id: "all", name: "全部", slug: "all" }, ...data],
+    select: data => [{ id: "all", name: "全部", slug: "all" }, ...data]
   });
 
   // Fetch jobs with filters
@@ -89,8 +82,8 @@ export default function CareersContent() {
           selectedTypes.length === 1 && selectedTypes[0] !== "all"
             ? selectedTypes[0]
             : selectedTypes.length > 1 && !selectedTypes.includes("all")
-            ? selectedTypes
-            : undefined,
+              ? selectedTypes
+              : undefined,
         search: queryTerm || undefined,
         page: currentPage,
         limit: 10,
@@ -106,8 +99,8 @@ export default function CareersContent() {
           selectedTypes.length === 1 && selectedTypes[0] !== "all"
             ? selectedTypes[0]
             : selectedTypes.length > 1 && !selectedTypes.includes("all")
-            ? selectedTypes.toString()
-            : undefined,
+              ? selectedTypes.toString()
+              : undefined,
         search: queryTerm || undefined,
         page: currentPage,
         limit: 10,
@@ -205,13 +198,13 @@ export default function CareersContent() {
 
   return (
     <div className="min-h-screen bg-white pt-20">
-      <section className="h-[480px] relative">
+      <section className="sm:h-[480px] h-[167px] relative">
         <Image
           src="/images/careers/banner.png"
           alt="加入我们  成就精彩的你"
           width={1920}
           height={480}
-          className="absolute top-0 left-1/2 -translate-x-1/2 media h-[480px] inset-0 object-cover"
+          className="absolute top-0 left-1/2 -translate-x-1/2 media sm:h-[480px] h-[167px] inset-0 object-cover"
         />
         <div
           className="absolute inset-0 z-[1]"
@@ -223,7 +216,7 @@ export default function CareersContent() {
         <div className="max-w-7xl text-center mx-auto px-4 sm:px-6 lg:px-8 relative z-10 top-1/3 flex items-center justify-center">
           <h1
             className={cn(
-              "text-4xl lg:text-5xl text-center font-bold leading-tight text-balance text-white"
+              "text-4xl lg:text-5xl text-center font-bold leading-tight text-balance text-white",
             )}
           >
             加入我们 成就精彩的你
@@ -382,11 +375,10 @@ export default function CareersContent() {
                       <div className="flex flex-col space-y-3 w-full">
                         <div className="flex items-center justify-between">
                           <h3
-                            className={`font-bold text-xl sm:text-lg transition-colors duration-300 ${
-                              activeJobIndex === index
-                                ? "text-vibrant-blue"
-                                : "text-charcoal"
-                            }`}
+                            className={`font-bold text-xl sm:text-lg transition-colors duration-300 ${activeJobIndex === index
+                              ? "text-vibrant-blue"
+                              : "text-charcoal"
+                              }`}
                           >
                             {job.job_title}
                           </h3>
@@ -401,7 +393,7 @@ export default function CareersContent() {
                           {job.recruitment_post_type.name}
                         </div>
 
-                        <div className="text-sm text-dark-blue-grey leading-relaxed break-words">
+                        <div className="text-sm text-medium-dark-blue-grey leading-relaxed break-words">
                           {getPreviewText(job.job_description)}
                         </div>
                       </div>
@@ -418,8 +410,8 @@ export default function CareersContent() {
                   currentPage={currentPage}
                   totalPages={totalPages}
                   onPageChange={(page) => {
-                    setCurrentPage(page);
-                    updateURLParams({ page });
+                    setCurrentPage(page)
+                    updateURLParams({ page })
                   }}
                 />
               </div>
@@ -428,7 +420,10 @@ export default function CareersContent() {
         </div>
       </div>
 
-      <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+      <Sheet
+        open={isMobileMenuOpen}
+        onOpenChange={setIsMobileMenuOpen}
+      >
         <SheetContent
           side="right"
           showCloseButton={false}
@@ -436,7 +431,10 @@ export default function CareersContent() {
         >
           <SheetHeader className="pb-0">
             <SheetTitle className="text-left font-semibold text-lg text-charcoal flex items-center justify-between">
-              <Link href={"/"} className="flex items-center space-x-2">
+              <Link
+                href={"/"}
+                className="flex items-center space-x-2"
+              >
                 <Image
                   src="/images/logos/logo.svg"
                   alt="象导生涯"
@@ -475,25 +473,23 @@ export default function CareersContent() {
                 {jobCategories.map((category) => {
                   const isSelected =
                     category.id === "all"
-                      ? selectedCategories.length === 0 ||
-                        selectedCategories.includes("all")
-                      : selectedCategories.includes(category.id);
+                      ? selectedCategories.length === 0 || selectedCategories.includes("all")
+                      : selectedCategories.includes(category.id)
                   return (
                     <button
                       key={category.slug}
                       onClick={() => {
-                        handleCategoryChange(category.id);
-                        setIsMobileMenuOpen(false);
+                        handleCategoryChange(category.id)
+                        setIsMobileMenuOpen(false)
                       }}
-                      className={`px-4 py-2 rounded-sm text-sm font-medium transition-colors w-26 truncate ${
-                        isSelected
-                          ? "bg-vibrant-blue text-white"
-                          : "bg-white text-charcoal border border-gray-200 hover:border-vibrant-blue"
-                      }`}
+                      className={`px-4 py-2 rounded-sm text-sm font-medium transition-colors w-26 truncate ${isSelected
+                        ? "bg-vibrant-blue text-white"
+                        : "bg-white text-charcoal border border-gray-200 hover:border-vibrant-blue"
+                        }`}
                     >
                       {category.name}
                     </button>
-                  );
+                  )
                 })}
               </div>
             </div>
@@ -505,24 +501,23 @@ export default function CareersContent() {
                 {typeOptions.map((option) => {
                   const isSelected =
                     option.value === "all"
-                      ? selectedTypes.length === 0
-                      : selectedTypes.includes(option.value);
+                      ? selectedTypes.length === 0 || selectedTypes.includes("all")
+                      : selectedTypes.includes(option.value)
                   return (
                     <button
                       key={option.value}
                       onClick={() => {
-                        handleTypeChange(option.value);
-                        setIsMobileMenuOpen(false);
+                        handleTypeChange(option.value)
+                        setIsMobileMenuOpen(false)
                       }}
-                      className={`px-4 py-2 rounded-sm text-sm font-medium transition-colors w-26 truncate ${
-                        isSelected
-                          ? "bg-vibrant-blue text-white"
-                          : "bg-white text-charcoal border border-gray-200 hover:border-vibrant-blue"
-                      }`}
+                      className={`px-4 py-2 rounded-sm text-sm font-medium transition-colors w-26 truncate ${isSelected
+                        ? "bg-vibrant-blue text-white"
+                        : "bg-white text-charcoal border border-gray-200 hover:border-vibrant-blue"
+                        }`}
                     >
                       {option.label}
                     </button>
-                  );
+                  )
                 })}
               </div>
             </div>
@@ -530,5 +525,5 @@ export default function CareersContent() {
         </SheetContent>
       </Sheet>
     </div>
-  );
+  )
 }

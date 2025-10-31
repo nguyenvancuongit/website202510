@@ -34,9 +34,9 @@ const serviceCategories: ServiceCategory[] = [
     title: "学生发展指导智慧平台",
   },
   {
-    id: "device",
-    icon: "/images/career-education/smart.svg",
-    title: "生涯探索智能设备",
+    id: "consulting",
+    icon: "/images/career-education/card.svg",
+    title: "企业数字化咨询服务",
   },
   {
     id: "training",
@@ -44,9 +44,9 @@ const serviceCategories: ServiceCategory[] = [
     title: "生涯培训与活动",
   },
   {
-    id: "consulting",
-    icon: "/images/career-education/card.svg",
-    title: "企业数字化咨询服务",
+    id: "device",
+    icon: "/images/career-education/smart.svg",
+    title: "生涯探索智能设备",
   },
 ];
 
@@ -160,7 +160,7 @@ const productSystemsByCategory: Record<string, ProductSystem[]> = {
       id: "training-4",
       title: "企业参访活动",
       description:
-        "组织学生前往各行业企业进行实地观察，了解未来就业方向、岗位职责、薪资水平等，帮助学生进一步明晰生涯发展方向。",
+        "组织学生前往各行业、企业进行实地观察、了解未来就业方向、岗位职责、薪资水平等，帮助学生进一步明晰生涯发展方向。",
       bgColor: "linear-gradient(180deg, #9ED0FF 6.88%, #FFF 54.69%)",
       image: "/images/career-education/training/image4.png",
       alt: "Student Camp",
@@ -351,7 +351,7 @@ export default function CareerEducationProduct({
   };
 
   return (
-    <div className="md:min-h-screen px-4 md:px-6 pt-19 pb-[68px] md:pt-30 md:pb-40 relative">
+    <div className="md:min-h-screen px-5 md:px-6 pt-19 pb-[68px] md:pt-30 md:pb-40 relative">
       <Image
         src="/images/career-education/Ellipse1.svg"
         alt="bg1"
@@ -380,7 +380,7 @@ export default function CareerEducationProduct({
         >
           {/* Moving active pill */}
           <div
-            className={`absolute rounded-md md:rounded-full bg-white border-none border-gray-200 transition-all duration-300 ease-out pointer-events-none ${dirClass}`}
+            className={`absolute rounded-[12px] md:rounded-full bg-white border-none border-gray-200 transition-all duration-300 ease-out pointer-events-none ${dirClass}`}
             style={{
               left: pillStyle.left,
               top: pillStyle.top,
@@ -410,10 +410,10 @@ export default function CareerEducationProduct({
                   alt={tab.title}
                   width={32}
                   height={32}
-                  className="w-8 h-8"
+                  className="w-12 h-12 sm:w-8 sm:h-8"
                 />
                 <span
-                  className={`text-sm md:text-xl ${isActive ? "text-[#1C88F9]" : "text-[#1D2129]"
+                  className={`text-xs md:text-xl ${isActive ? "text-[#1C88F9]" : "text-[#1D2129]"
                     }`}
                 >
                   {tab.title}
@@ -423,9 +423,16 @@ export default function CareerEducationProduct({
             );
           })}
         </div>
-
+ 
         {/* Cards Carousel */}
         <div key={animationKey} className="relative">
+          <Image
+            src="/images/career-education/Ellipse1.svg"
+            alt="bg1"
+            width={1547}
+            height={926}
+            className="sm:hidden block absolute top-[350px] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-2/3 md:-translate-y-1/2 max-h-full"
+          />
           <Carousel opts={{ align: "start", loop: false }} className="w-full">
             <CarouselContent
               className={cn({
@@ -435,7 +442,7 @@ export default function CareerEducationProduct({
               {currentCards.map((card, index) => (
                 <CarouselItem
                   key={`${activeTab}-${index}`}
-                  className="basis-auto"
+                  className="basis-auto sm:pl-4 pl-6"
                 >
                   <div
                     className="group rounded-2xl p-6 md:py-12 md:px-8 border-none shadow-none transition-all duration-500 cursor-pointer transform opacity-0 animate-slide-in-right h-full w-[267px] md:w-[378px]"
@@ -448,7 +455,7 @@ export default function CareerEducationProduct({
                     <h3 className="text-lg md:text-2xl font-medium text-dark-blue-grey mb-3 md:mb-6">
                       {card.title}
                     </h3>
-                    <p className="text-medium-dark-blue-grey text-sm md:text-base leading-relaxed mb-6 md:mb-12">
+                    <p className="text-medium-dark-blue-grey text-sm md:text-base leading-relaxed mb-6 md:mb-12 text-justify">
                       {card.description}
                     </p>
                     <div className="w-full h-40 sm:h-48 md:h-52 rounded-xl overflow-hidden bg-white/50 border border-white/60">

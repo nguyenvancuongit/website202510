@@ -237,6 +237,17 @@ export function CaseStudiesManagement() {
         width: "140px",
       },
       {
+        id: "featuredAt",
+        header: "推荐时间",
+        accessorKey: "featured_at",
+        cell: (value) => (
+          <span className="text-sm text-gray-600 whitespace-nowrap">
+            {value ? format(new Date(value), "yyyy-MM-dd HH:mm", { locale: zhCN }) : "-"}
+          </span>
+        ),
+        width: "140px",
+      },
+      {
         id: "updatedAt",
         header: "更新时间",
         accessorKey: "updated_at",

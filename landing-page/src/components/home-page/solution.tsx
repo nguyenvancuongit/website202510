@@ -17,7 +17,7 @@ const solutions = [
     id: 1,
     title: "学生发展指导中心",
     description:
-      "象导生涯为学校提供软硬一体的学生发展指导中心一站式解决方案，助力其高效建成并投入运营",
+      "象导生涯为学校提供软硬件一体的学生发展指导中心一站式解决方案，助力其高效建成并投入运营。",
     image: "/images/solutions/solution-1.png",
     href: "/solutions/guidance-center",
   },
@@ -39,7 +39,7 @@ const solutions = [
   },
   {
     id: 4,
-    title: "教师生涯辅助",
+    title: "教师生涯咨询指导",
     description: "丰富多元的生涯教学资源包，助力教师高效备课，驱动生涯教育高质量发展",
     image: "/images/solutions/solution-4.png",
     href: "/solutions/teacher-guidance"
@@ -47,7 +47,8 @@ const solutions = [
   {
     id: 5,
     title: "师资培训",
-    description: "融合数字化与信息化培养模式，助力生涯指导老师全面提升专业能力",
+    description:
+      "融合数字化与信息化的培养模式，助力生涯指导老师全面提升专业能力。",
     image: "/images/solutions/solution-5.png",
     size: "small",
     href: "/solutions/teacher-training",
@@ -76,7 +77,7 @@ export default function SolutionsSection() {
         {/* Header */}
         <SectionHeader
           title="适配多种场景的解决方案"
-          subtitle="针对不同群体提供个性化的生涯发展解决方案"
+          subtitle="针对不同群体，提供个性化的生涯发展解决方案"
         />
 
         {isTablet || isMobile ? (

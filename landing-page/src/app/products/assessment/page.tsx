@@ -74,17 +74,17 @@ const advantages = [
   {
     title: "游戏化设计，学生参与度",
     description: "心理学线上线下游戏，从玩乐中启迪智慧",
-    image: "/images/solutions/classroom/advantages/advantages-1.png",
+    image: "/images/products/advantages/advantages-1.svg",
   },
   {
     title: "科技赋能，执行效率高",
     description: "智能终端+数字化测评，单场活动支持约3000人",
-    image: "/images/solutions/classroom/advantages/advantages-2.png",
+    image: "/images/products/advantages/advantages-2.svg",
   },
   {
     title: "经验丰富，教育效果显著",
     description: "已举办近百场活动，具有成熟的活动体系，受到广泛好评。",
-    image: "/images/solutions/classroom/advantages/advantages-3.png",
+    image: "/images/products/advantages/advantages-3.png",
   },
 ];
 
@@ -111,7 +111,7 @@ export default async function AssessmentPage() {
         />
         <BannerService />
         <ActivitySection />
-        <SolutionAdvantagesSection advantages={advantages} />
+        <SolutionAdvantagesSection title="活动优势" advantages={advantages} />
         <CaseStudiesSection
           title="合作案例"
           buttonText="合作咨询"

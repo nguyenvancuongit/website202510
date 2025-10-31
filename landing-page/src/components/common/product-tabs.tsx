@@ -49,7 +49,7 @@ export default function ProductTabs({
               onClick={() => setActiveTab(index)}
               onMouseEnter={() => setActiveTab(index)}
               className={`flex items-center justify-center gap-2 px-4 bg-transparent sm:px-6 py-2 sm:py-3 transition-all duration-300 text-base sm:text-lg ${activeTab === index
-                ? "text-vibrant-blue rounded-[44px] bg-white shadow-[2px_12px_16px_0_rgba(176,215,255,0.25)]"
+                ? "text-vibrant-blue text-xl rounded-[44px] bg-white shadow-[2px_12px_16px_0_rgba(176,215,255,0.25)]"
                 : "text-charcoal rounded-lg hover:bg-white/50"
                 }`}
               variants={{
@@ -71,10 +71,10 @@ export default function ProductTabs({
         </motion.div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-start overflow-hidden sm:overflow-visible">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-start">
           {/* Text Content - Staggered from left */}
           <motion.div
-            className="space-y-5 sm:space-y-6 order-2 sm:order-1"
+            className="space-y-4 sm:space-y-6 order-2 sm:order-1"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -90,10 +90,10 @@ export default function ProductTabs({
             }}
           >
             <motion.h2
-              className="text-base sm:text-2xl md:text-[32px] font-medium md:font-bold text-gray-900 leading-tight"
+              className="text-base sm:text-2xl md:text-[32px] font-bold text-gray-900 leading-tight"
               variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 },
+                hidden: { opacity: 0, x: -40 },
+                visible: { opacity: 1, x: 0 },
               }}
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -102,8 +102,8 @@ export default function ProductTabs({
             <motion.div
               className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-600 min-h-[60px] sm:min-h-[80px]"
               variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 },
+                hidden: { opacity: 0, x: -40 },
+                visible: { opacity: 1, x: 0 },
               }}
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -115,8 +115,8 @@ export default function ProductTabs({
             </motion.div>
             <motion.div
               variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 },
+                hidden: { opacity: 0, x: -40 },
+                visible: { opacity: 1, x: 0 },
               }}
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -136,8 +136,8 @@ export default function ProductTabs({
           {/* Image Content - Fade from right */}
           <motion.div
             className="relative w-full order-1 sm:order-2"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.9, delay: 0.8, ease: "easeOut" }}
           >
@@ -146,7 +146,7 @@ export default function ProductTabs({
               height={500}
               src={platforms[activeTab].image}
               alt={`${platforms[activeTab].title} Interface`}
-              className="w-full h-auto object-cover"
+              className="w-full h-auto"
             />
           </motion.div>
         </div>

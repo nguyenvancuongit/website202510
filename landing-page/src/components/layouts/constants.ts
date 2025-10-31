@@ -8,7 +8,7 @@ export const staticProductMapping: Record<string, MenuItemProps> = {
     image: "/icons/header/product/sass.svg",
   },
   "terminal": {
-    label: "智慧生涯自助探索终端",
+    label: "智能生涯自助探索终端",
     href: "/products/terminal",
     subtitle: "助力学生课余自助探索",
     image: "/icons/header/product/terminal.svg",

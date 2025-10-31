@@ -178,11 +178,8 @@ export const RecruitmentPostTypesTable = forwardRef<RecruitmentPostTypesTableRef
         id: "name",
         header: "类型名称",
         accessorKey: "name",
-        cell: (value, row) => (
-          <div>
-            <div className="font-medium">{value}</div>
-            <div className="text-sm text-muted-foreground">{row.slug}</div>
-          </div>
+        cell: (value) => (
+          <div className="font-medium">{value}</div>
         ),
       },
       {

@@ -60,7 +60,7 @@ export default function PartnerLogosSection({
     mobileSlides.push(partners.slice(i, i + partnersPerSlide));
   }
   return (
-    <section className={`pb-20 md:pb-45 ${backgroundClassName} ${className}`}>
+    <section className={`sm:py-20 py-10 ${backgroundClassName} ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2
           className="text-2xl md:text-[56px] font-bold text-[#1C1919] sm:mb-16 mb-10"

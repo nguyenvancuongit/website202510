@@ -316,6 +316,7 @@ model CaseStudy {
   customerFeedback       String?         @map("customer_feedback") @db.Text
   createdAt              DateTime        @default(now()) @map("created_at")
   updatedAt              DateTime        @updatedAt @map("updated_at")
+  featuredAt             DateTime?       @default(now()) @map("featured_at")
   createdBy              BigInt?         @map("created_by")
   updatedBy              BigInt?         @map("updated_by")
 
@@ -351,17 +352,17 @@ enum SectionType {
 }
 
 model OperationLog {
-  id               BigInt          @id @default(autoincrement())
-  userId           BigInt          @map("user_id")
-  operationType    String          @map("operation_type") @db.VarChar(100) // e.g., "create", "update", "delete", "export"
-  module           String          @db.VarChar(100) // e.g., "资讯文章管理", "Banner信息列表"
-  operationDesc    String          @map("operation_desc") @db.VarChar(500) // Description of the operation
-  targetType       String?         @map("target_type") @db.VarChar(100) // Type of entity operated on
-  targetId         String?         @map("target_id") @db.VarChar(100) // ID of the entity operated on
-  ipAddress        String?         @map("ip_address") @db.VarChar(45) // IPv4 or IPv6 address
-  requestParams    Json?           @map("request_params") // Request parameters as JSON
-  status           OperationStatus @default(success)
-  createdAt        DateTime        @default(now()) @map("created_at")
+  id            BigInt          @id @default(autoincrement())
+  userId        BigInt          @map("user_id")
+  operationType String          @map("operation_type") @db.VarChar(100) // e.g., "create", "update", "delete", "export"
+  module        String          @db.VarChar(100) // e.g., "资讯文章管理", "Banner信息列表"
+  operationDesc String          @map("operation_desc") @db.VarChar(500) // Description of the operation
+  targetType    String?         @map("target_type") @db.VarChar(100) // Type of entity operated on
+  targetId      String?         @map("target_id") @db.VarChar(100) // ID of the entity operated on
+  ipAddress     String?         @map("ip_address") @db.VarChar(45) // IPv4 or IPv6 address
+  requestParams Json?           @map("request_params") // Request parameters as JSON
+  status        OperationStatus @default(success)
+  createdAt     DateTime        @default(now()) @map("created_at")
 
   // Relations
   user User @relation(fields: [userId], references: [id])

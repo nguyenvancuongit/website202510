@@ -69,14 +69,15 @@ export default function UniversityCityPage() {
         <TestimonialsSection
           title="方案背景"
           description={[
-            "随着《健康中国行动——儿童青少年心理健康行动方案》等政策推进，学校需建立常态化心理筛查与生涯指导机制。当前教育痛点在于:",
-            "·数据割裂：心理与生涯数据分散，难以形成学生成长全景视图；",
-            "·预警滞后：传统人工筛查效率低，难以及时识别高风险个体；",
-            "·干预脱节：家校协同不足，缺乏动态跟踪工具。",
+            `随着《健康中国行动——儿童青少年心理健康行动方案》等政策推进，学校需建立常态化心理筛查与生涯指导机制。当前教育痛点在于: 
+            ·数据割裂：心理与生涯数据分散，难以形成学生成长全景视图；
+            ·预警滞后：传统人工筛查效率低，难以及时识别高风险个体；
+            ·干预脱节：家校协同不足，缺乏动态跟踪工具。
+            `,
           ]}
         />
         <SolutionIntroduction title="方案介绍" introductions={intros} />
-        <SolutionAdvantagesSection advantages={advantages} />
+        <SolutionAdvantagesSection advantages={advantages} classNameText="text-base sm:text-sm" />
         <CaseStudies />
       </div>
     </SolutionPageGuard>

@@ -81,7 +81,7 @@ export default function Banner({
       />
       {hasOverlay && (
         <div
-          className="hidden sm:block absolute inset-0 z-[1]"
+          className="absolute inset-0 z-[1]"
           style={{
             background: overlayColor,
           }}
@@ -89,7 +89,7 @@ export default function Banner({
       )}
       <div className={cn("max-w-7xl h-full mx-auto box-border px-6 md:px-8 relative z-10 flex sm:items-center items-baseline", containerClassName)}>
         <motion.div
-          className={cn("h-full flex flex-col justify-between md:justify-center max-w-3xl pb-15 pt-14 sm:py-20", innerClassName)}
+          className={cn("h-full flex flex-col justify-between md:justify-center max-w-3xl pb-15 pt-15 sm:py-20", innerClassName)}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -121,7 +121,7 @@ export default function Banner({
           </motion.div>
           {showButton && (
             <motion.div
-              className="mt-14 sm:mt-0"
+              className="mt-20 sm:mt-0"
               variants={slideInVariants}
             >
               <GradientButton size="default">

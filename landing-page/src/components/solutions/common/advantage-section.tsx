@@ -8,11 +8,13 @@ import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carouse
 import { cn } from "@/lib/utils";
 
 export interface SolutionAdvantagesSectionProps {
+  title?: string;
   advantages: {
     title: string;
     description: string;
     image: string;
   }[];
+  classNameText?: string;
 }
 
 // Animation variants
@@ -35,7 +37,9 @@ const advantageItemVariants = {
   }
 };
 const SolutionAdvantagesSection = ({
+  title = "方案优势",
   advantages,
+  classNameText = "",
 }: SolutionAdvantagesSectionProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [api, setApi] = useState<CarouselApi>();
@@ -69,7 +73,7 @@ const SolutionAdvantagesSection = ({
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.0, ease: "easeOut" }}
       >
-        方案优势
+        {title}
       </motion.h2>
 
       {/* Mobile View - Carousel on top, content below */}
@@ -134,7 +138,7 @@ const SolutionAdvantagesSection = ({
             <h3 className="font-medium sm:font-bold text-base sm:text-xl text-charcoal mb-4">
               {advantages[activeIndex].title}
             </h3>
-            <p className="font-normal text-medium-dark-blue-grey text-sm sm:leading-6 leading-8">
+            <p className={cn("font-normal text-medium-dark-blue-grey text-sm sm:leading-6 leading-normal", classNameText)}>
               {advantages[activeIndex].description}
             </p>
           </motion.div>
