@@ -24,7 +24,7 @@ const partners = [
     logo: "/images/products/partners/logo4.svg",
   },
   {
-    name: "罗湖高级中学",
+    name: "深圳市罗湖高级中学",
     logo: "/images/products/partners/logo5.svg",
   },
 

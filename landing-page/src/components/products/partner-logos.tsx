@@ -14,15 +14,15 @@ const partners = [
     logo: "/images/products/partners/logo3.svg",
   },
   {
-    name: "广州市真光中学",
+    name: "广州市第三中学",
     logo: "/images/products/partners/logo4.svg",
   },
   {
-    name: "罗湖高级中学",
+    name: "深圳市罗湖高级中学",
     logo: "/images/products/partners/logo5.svg",
   },
   {
-    name: "深圳市翠园中学高中部",
+    name: "深圳市龙岗区横岗高级中学",
     logo: "/images/products/partners/logo6.svg",
   },
   {
@@ -42,11 +42,11 @@ const partners = [
     logo: "/images/products/partners/logo10.svg",
   },
   {
-    name: "广州市美术高级中学",
+    name: "广州华美英语实验学校",
     logo: "/images/products/partners/logo11.svg",
   },
   {
-    name: "佛山市南海区桂城高级中学",
+    name: "佛山市南海外国语高级中学",
     logo: "/images/products/partners/logo12.svg",
   },
   {
