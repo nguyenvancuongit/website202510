@@ -229,7 +229,7 @@ export default function JobDetailContent() {
         jobTitle={jobDetail.job_title}
         jobId={jobDetail.id}
         onSuccess={() => {
-          toast.success("职位申请成功，页面跳转中…")
+          toast.success("您的简历已投递成功，可继续了解其他招聘岗位")
         }}
         onError={(err) => {
           toast.error("提交失败，请重试", {

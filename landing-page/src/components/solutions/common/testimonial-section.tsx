@@ -4,9 +4,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
+
 interface Props {
   title: string;
   description: string[] | string;
+  classNameText?: string;
 }
 
 // Animation variants
@@ -34,7 +37,7 @@ const itemVariants = {
 
 
 
-const TestimonialsSection = ({ title, description }: Props) => {
+const TestimonialsSection = ({ title, description, classNameText = "" }: Props) => {
   return (
     <section className="relative py-10 md:p-0 md:mb-45 w-full flex flex-col items-center justify-center md:min-h-[600px]">
       <Image
@@ -61,7 +64,7 @@ const TestimonialsSection = ({ title, description }: Props) => {
         </motion.h2>
 
         <motion.div
-          className="text-medium-dark-blue-grey px-6 py-10 sm:py-9 md:p-0 text-sm md:text-xl flex flex-col gap-6 font-[350px] sm:font-normal tracking-[0] bg-[url('/images/solutions/guidance-center/testimonial-bg.svg')] sm:bg-[url('/images/solutions/guidance-center/testimonial-bg.png')] bg- bg-no-repeat md:bg-none"
+          className="text-medium-dark-blue-grey px-6 py-10 sm:py-9 md:p-0 text-sm md:text-xl flex flex-col gap-3 font-[350px] sm:font-normal tracking-[0] bg-[url('/images/solutions/guidance-center/testimonial-bg.svg')] sm:bg-[url('/images/solutions/guidance-center/testimonial-bg.png')] bg- bg-no-repeat md:bg-none"
           variants={itemVariants}
           transition={{ duration: 0.6, delay: 0.2 }}
           style={{
@@ -73,7 +76,7 @@ const TestimonialsSection = ({ title, description }: Props) => {
           {Array.isArray(description) ? (
             description.map((desc, index) => (
               <motion.span
-                className="leading-8.5 md:leading-9 block"
+                className="leading-6 md:leading-9 block whitespace-pre-line sm:whitespace-normal"
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +92,7 @@ const TestimonialsSection = ({ title, description }: Props) => {
             ))
           ) : (
             <motion.span
-              className="leading-6 md:leading-[56px]"
+              className={cn("leading-6 md:leading-[56px]", classNameText)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

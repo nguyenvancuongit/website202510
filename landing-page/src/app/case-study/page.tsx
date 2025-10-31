@@ -1,5 +1,6 @@
 import CaseStudyList from "@/components/case-study/case-study-list";
 import Banner from "@/components/common/banner";
+import HomeHeroSection from "@/components/home-page/hero-section";
 
 export default function CasesPage() {
   return (
@@ -11,13 +12,15 @@ export default function CasesPage() {
         hasOverlay
         overlayColor="linear-gradient(90deg, rgba(15, 85, 207, 0.80) 0.04%, rgba(87, 176, 253, 0.00) 99.95%)"
         textColor="white"
+        objectPosition="0% 0%"
       />
-      <div className="max-w-7xl mx-auto px-6 py-16 space-y-16">
+      <div className="max-w-7xl mx-auto px-6 sm:py-16 pt-10 pb-20 sm:space-y-16 space-y-12">
         <p className="text-3xl md:text-6xl text-black font-bold text-center">
           已帮助<span className="text-vibrant-blue">100+</span>学校成功实现生涯教育数智化
         </p>
         <CaseStudyList initialCategory="all" />
       </div>
+      <HomeHeroSection />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { useMedia } from "@/hooks/use-media";
+import { getTruncatedTextFromHtml } from "@/lib/string";
 import { cn } from "@/lib/utils";
 import { CaseStudy } from "@/services/case-study.service";
 
@@ -116,7 +117,7 @@ const ClientCasesSection = ({ caseStudies }: Props) => {
   }, [api, isMobile]);
 
   return (
-    <section className="max-w-7xl mx-auto md:px-6 py-30 md:py-20 bg-white ">
+    <section className="max-w-7xl mx-auto md:px-6 py-20 md:py-20 bg-white ">
       <div className="relative pb-20 md:pb-50">
         <SectionHeader
           title="合作案例"
@@ -182,7 +183,7 @@ const ClientCasesSection = ({ caseStudies }: Props) => {
 
         {/* Detail Section */}
         {!!selectedItem && (
-          <div className="bg-white rounded-2xl md:p-8 max-w-5xl mx-auto px-5">
+          <div className="bg-white rounded-2xl md:p-8 max-w-5xl mx-auto px-5 h-[350px] md:h-[320px]">
             <div className="flex flex-col md:flex-row items-start md:gap-8">
               {/* Large number */}
               <div className="flex-shrink-0 flex md:block items-center gap-2">
@@ -201,12 +202,9 @@ const ClientCasesSection = ({ caseStudies }: Props) => {
                 <h3 className="hidden md:block text-2xl md:font-bold text-dark-blue-grey pb-4 leading-tight border-b border-muted-foreground w-fit">
                   {selectedItem.title}
                 </h3>
-                <p
-                  className="text-medium-dark-blue-grey mt-4 leading-relaxed text-lg"
-                  dangerouslySetInnerHTML={{
-                    __html: selectedItem.customer_feedback,
-                  }}
-                ></p>
+                <p className="text-medium-dark-blue-grey mt-4 leading-relaxed text-lg">
+                  {getTruncatedTextFromHtml(selectedItem.customer_feedback, 150)}
+                </p>
               </div>
             </div>
           </div>

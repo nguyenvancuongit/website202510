@@ -17,7 +17,7 @@ const gradientButtonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
       },
       size: {
-        default: "h-10 md:h-14 px-4 md:px-10 py-2 text-sm md:text-2xl",
+        default: "h-10.5 md:h-14 px-4 md:px-10 py-2 text-sm md:text-2xl",
         sm: "h-8 rounded-full px-3 text-xs",
         lg: "h-10 rounded-full px-8 text-sm gap-1",
         icon: "h-9 w-9",

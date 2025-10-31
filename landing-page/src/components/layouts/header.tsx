@@ -140,7 +140,7 @@ export function Header() {
         }
       )}
     >
-      <div className="mx-auto px-4.5 lg:px-20 py-4">
+      <div className="mx-auto px-4.5 lg:px-20 sm:py-4 py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href={"/"} className="flex items-center space-x-2">

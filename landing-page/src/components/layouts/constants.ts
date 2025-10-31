@@ -7,7 +7,7 @@ export const staticProductMapping: Record<string, MenuItemProps> = {
     subtitle: "赋能生涯教育数智化建设",
     image: "/icons/header/product/sass.svg",
   },
-  terminal: {
+  "terminal": {
     label: "智能生涯自助探索终端",
     href: "/products/terminal",
     subtitle: "助力学生课余自助探索",

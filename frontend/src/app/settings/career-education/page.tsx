@@ -29,6 +29,7 @@ interface CategoryRow {
   name: string;
   icon?: string;
   description?: string;
+  disableAction?: boolean;
 }
 
 interface ItemRow {
@@ -42,6 +43,7 @@ interface ItemRow {
   bgColor?: string;
   image?: string;
   alt?: string;
+  disableAction?: boolean;
 }
 
 type TableRow = CategoryRow | ItemRow;
@@ -59,6 +61,7 @@ export default function CareerEducationPage() {
   }, [config]);
 
   // Transform config to flat table rows
+
   const tableRows = useMemo((): TableRow[] => {
     if (!localConfig) return [];
 
@@ -92,12 +95,15 @@ export default function CareerEducationPage() {
           ...item,
           categoryKey,
           type: "item" as const,
+          disableAction: !category.enabled,
+
         });
       });
     });
 
     return rows;
   }, [localConfig]);
+
 
   const handleToggleCategoryEnabled = useCallback(
     async (categoryKey: string) => {
@@ -351,6 +357,7 @@ export default function CareerEducationPage() {
           <div className="flex items-center space-x-2">
             <Switch
               checked={value}
+              disabled={row.disableAction}
               onCheckedChange={() => {
                 if (row.type === "category") {
                   handleToggleCategoryEnabled(row.key);
@@ -381,7 +388,7 @@ export default function CareerEducationPage() {
                   variant="ghost"
                   size="sm"
                   onClick={() => handleMoveCategoryUp(row.key)}
-                  disabled={row.order === 1}
+                  disabled={row.order === 1 || row.disableAction}
                   className="h-8 px-2"
                 >
                   <ArrowUp className="h-4 w-4" />
@@ -390,7 +397,7 @@ export default function CareerEducationPage() {
                   variant="ghost"
                   size="sm"
                   onClick={() => handleMoveCategoryDown(row.key)}
-                  disabled={row.order === 4}
+                  disabled={row.order === 4 || row.disableAction}
                   className="h-8 px-2"
                 >
                   <ArrowDown className="h-4 w-4" />
@@ -409,7 +416,7 @@ export default function CareerEducationPage() {
                   variant="ghost"
                   size="sm"
                   onClick={() => handleMoveItemUp(row.categoryKey, row.id)}
-                  disabled={currentIndex === 0}
+                  disabled={currentIndex === 0 || row.disableAction}
                   className="h-8 px-2"
                 >
                   <ArrowUp className="h-4 w-4" />
@@ -418,7 +425,7 @@ export default function CareerEducationPage() {
                   variant="ghost"
                   size="sm"
                   onClick={() => handleMoveItemDown(row.categoryKey, row.id)}
-                  disabled={currentIndex === itemCount - 1}
+                  disabled={currentIndex === itemCount - 1 || row.disableAction}
                   className="h-8 px-2"
                 >
                   <ArrowDown className="h-4 w-4" />

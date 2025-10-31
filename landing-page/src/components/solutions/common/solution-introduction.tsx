@@ -62,7 +62,7 @@ const SolutionIntroduction = ({
         </motion.h2>
         {description && (
           <motion.p
-            className="text-sm md:text-xl leading-6 md:leading-normal font-normal text-medium-dark-blue-grey mt-3.5 sm:mt-6"
+            className="text-sm md:text-xl leading-6 font-normal text-medium-dark-blue-grey mt-3.5 sm:mt-6"
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -122,7 +122,7 @@ const SolutionCard = ({
     >
       <CardContent className="flex flex-col gap-3 md:gap-8 h-full sm:px-6 px-5">
         <h3 className="font-medium text-[18px] md:text-[28px] text-charcoal">{solution.title}</h3>
-        <p className="text-sm md:text-base font-normal text-dark-blue-grey flex-grow h-auto min-h-[60px]">
+        <p className="text-sm md:text-base leading-normal md:leading-8 font-normal text-dark-blue-grey flex-grow h-auto min-h-[60px]">
           {solution.description}
         </p>
         <Image

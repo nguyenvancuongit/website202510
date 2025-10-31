@@ -39,8 +39,7 @@ const solutions = [
   {
     id: 4,
     title: "教师生涯咨询指导",
-    description:
-      "丰富多元的生涯教学资源包，助力教师高效备课，驱动生涯教育高质量发展。",
+    description: "丰富多元的生涯教学资源包，助力教师高效备课，驱动生涯教育高质量发展",
     image: "/images/solutions/solution-4.png",
     href: "/solutions/teacher-guidance",
   },

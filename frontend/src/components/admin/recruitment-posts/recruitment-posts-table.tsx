@@ -50,7 +50,7 @@ export const RecruitmentPostsTable = forwardRef<RecruitmentPostsTableRef>(
       job_title: "",
       recruitment_post_type_id: "",
       job_type: "",
-      status: "",
+      status: RecruitmentPostStatus.PUBLISHED as string,
     });
 
     // Filters for actual API query

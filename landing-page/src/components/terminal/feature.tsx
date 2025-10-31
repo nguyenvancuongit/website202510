@@ -78,7 +78,7 @@ export default function Feature() {
   };
 
   return (
-    <section className="pt-0 pb-10 sm:py-12 md:py-14 lg:py-16 bg-white sm:bg-gradient-to-b sm:from-white/80 sm:to-[rgba(242,247,255,0.80)]">
+    <section className="py-8 sm:py-12 md:py-14 lg:py-16 bg-white sm:bg-gradient-to-b sm:from-white/80 sm:to-[rgba(242,247,255,0.80)]">
       {/* Desktop */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ProductTabs with fade-in from top animation */}
@@ -89,7 +89,10 @@ export default function Feature() {
           viewport={{ once: true, amount: 0.9 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <ProductTabs tabs={tabs} platforms={platforms} />
+          <ProductTabs
+            tabs={tabs}
+            platforms={platforms}
+          />
         </motion.div>
         <div className="sm:hidden flex flex-col gap-8">
           {platforms.map((platform, index) => (
@@ -99,18 +102,22 @@ export default function Feature() {
                   background:
                     "radial-gradient(53.69% 53.69% at 49.86% 46.31%, #4A6F8C 0%, #283A4F 100%)",
                 }}
-                className="pb-4 min-h-[400px] relative"
+                className="pb-4 h-[412px] relative rounded-[2px]"
               >
-                <h2 className="text-white text-2xl pt-4 text-center">{platform.title}</h2>
+                <h2 className="text-white text-2xl pt-7 text-center">
+                  {platform.title}
+                </h2>
                 <Image
                   src={platform?.imageMobile || ""}
                   alt={platform.title}
                   width={224}
                   height={260}
-                  className="w-1/2 h-auto object-cover mx-auto pb-4 pt-4"
+                  className="w-1/2 h-fit sm:object-cover mx-auto absolute left-1/2 -translate-x-1/2 bottom-1/2 translate-y-1/2 object-scale-down"
                 />
               </div>
-              <p className="text-md text-dark-blue-grey mt-2">{platform.description}</p>
+              <p className="text-md text-medium-dark-blue-grey mt-4.5">
+                {platform.description}
+              </p>
             </div>
           ))}
         </div>
@@ -144,7 +151,6 @@ export default function Feature() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 style={{
                   background: "linear-gradient(180deg, #FFF 0%, #F3F8FF 100%)",
-
                 }}
               >
                 {/* Icon */}
@@ -203,10 +209,11 @@ export default function Feature() {
               >
                 {/* Default state - Icon with title */}
                 <div
-                  className={`flex flex-col items-center justify-center p-4 sm:p-5 md:p-5.5 lg:p-6 rounded-2xl transition-all duration-300 ${isActive
-                    ? "opacity-0 scale-95"
-                    : "lg:group-hover:opacity-0 lg:group-hover:scale-95"
-                    }`}
+                  className={`flex flex-col items-center justify-center p-4 sm:p-5 md:p-5.5 lg:p-6 rounded-2xl transition-all duration-300 ${
+                    isActive
+                      ? "opacity-0 scale-95"
+                      : "lg:group-hover:opacity-0 lg:group-hover:scale-95"
+                  }`}
                 >
                   <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-15 md:h-15 lg:w-16 lg:h-16 rounded-2xl flex items-center justify-center mb-4 sm:mb-5 md:mb-5.5 lg:mb-6">
                     <Image
@@ -224,10 +231,11 @@ export default function Feature() {
 
                 {/* Hover/Active state - Detailed card */}
                 <div
-                  className={`absolute inset-0 p-4 sm:p-5 md:p-6 lg:p-8 h-max lg:h-[280px] text-white shadow-lg transition-all duration-300 z-10 ${isActive
-                    ? "opacity-100 scale-100 pointer-events-auto"
-                    : "opacity-0 scale-95 pointer-events-none lg:group-hover:opacity-100 lg:group-hover:scale-100 lg:group-hover:pointer-events-auto"
-                    }`}
+                  className={`absolute inset-0 p-4 sm:p-5 md:p-6 lg:p-8 h-max lg:h-[280px] text-white shadow-lg transition-all duration-300 z-10 ${
+                    isActive
+                      ? "opacity-100 scale-100 pointer-events-auto"
+                      : "opacity-0 scale-95 pointer-events-none lg:group-hover:opacity-100 lg:group-hover:scale-100 lg:group-hover:pointer-events-auto"
+                  }`}
                   style={{
                     background:
                       "linear-gradient(180deg, #0582FF 0%, #62B1FF 100%)",

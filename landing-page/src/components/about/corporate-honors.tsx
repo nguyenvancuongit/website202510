@@ -33,10 +33,10 @@ export default function CorporateHonors() {
           <p className="text-dark-blue-grey mb-12">
             荣誉见证服务品质，科技护航人才发展，象导生涯将坚守本心，砥砺前行。
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 sm:gap-8 gap-12.5">
             {[1, 2, 3].map((i) => (
               <div key={i} className="text-center">
-                <div className="h-64 mb-4 relative overflow-hidden bg-gray-200 animate-pulse rounded-lg" />
+                <div className="h-64 mb-5 relative overflow-hidden bg-gray-200 animate-pulse rounded-lg" />
                 <div className="h-6 bg-gray-200 animate-pulse rounded" />
               </div>
             ))}
@@ -87,7 +87,7 @@ export default function CorporateHonors() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {honors.map((honor) => (
             <div key={honor.id} className="text-center">
-              <div className="h-64 mb-4 relative overflow-hidden">
+              <div className="h-64 mb-5 relative overflow-hidden">
                 <Image
                   src={
                     honor.image?.path ||
@@ -95,10 +95,10 @@ export default function CorporateHonors() {
                   }
                   alt={honor.image?.alt_text || honor.name}
                   fill
-                  className="object-cover"
+                  className="sm:object-cover object-contain"
                 />
               </div>
-              <p className="text-charcoal text-base sm:text-xl font-medium text-center">
+              <p className="text-charcoal text-base sm:text-xl font-medium text-center sm:w-full w-3/5 mx-auto">
                 {honor.name}
               </p>
             </div>

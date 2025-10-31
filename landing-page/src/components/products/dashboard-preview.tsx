@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function DashboardPreview() {
   return (
-    <section className="relative mb-20 md:mb-50">
+    <section className="relative sm:pb-0 pb-15">
       <Image
         src="/images/products/banner-dashboard.svg"
         alt="Dashboard Preview"

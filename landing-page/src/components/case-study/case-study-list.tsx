@@ -76,7 +76,7 @@ const CaseStudyList = ({ initialCategory = "all" }: CaseStudyListProps) => {
   };
 
   return (
-    <div className="min-h-screen" id="main-case-study-section">
+    <div className="sm:min-h-screen min-h-full" id="main-case-study-section">
       <CaseStudyCategoryTab
         activeTab={selectedCategory}
         onTabChange={handleTabChange}
@@ -85,7 +85,7 @@ const CaseStudyList = ({ initialCategory = "all" }: CaseStudyListProps) => {
       />
       <div className="space-y-8">
         {data?.data && data.data.length === 0 && <EmptyState />}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-6 gap-8 items-stretch">
           {isLoadingCaseStudies ? (
             <>
               {Array.from({ length: 6 }).map((_, index) => (
@@ -93,12 +93,12 @@ const CaseStudyList = ({ initialCategory = "all" }: CaseStudyListProps) => {
               ))}
             </>
           ) : (
-            data?.data.map((caseStudy) => (
-              <CaseStudyCard caseStudy={caseStudy} key={caseStudy.id} />
+            data?.data.map((caseStudy, index: number) => (
+              <CaseStudyCard lastCard={index === data.data.length - 1} caseStudy={caseStudy} key={caseStudy.id} />
             ))
           )}
         </div>
-        {data?.pagination.total_pages && data.pagination.total_pages > 1 && (
+        { data?.pagination && data?.pagination.total_pages > 1 && (
           <CompactPagination
             currentPage={page}
             onPageChange={handlePageChange}

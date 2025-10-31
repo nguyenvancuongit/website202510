@@ -106,6 +106,7 @@ export class CaseStudiesService {
       slug: slug,
       status: createCaseStudyDto.status,
       featured: createCaseStudyDto.featured || false,
+      featureAt: createCaseStudyDto.featured ? new Date() : null,
       categoryId: BigInt(createCaseStudyDto.category_id),
       keyHighlights: createCaseStudyDto.key_highlights || [],
     };
@@ -287,7 +288,12 @@ export class CaseStudiesService {
     const [rows, total] = await Promise.all([
       this.prisma.caseStudy.findMany({
         where,
-        orderBy: [{ featured: 'desc' }, { createdAt: 'desc' }],
+        orderBy: [{ featured: 'desc' }, {
+          featuredAt: {
+            sort: 'asc',
+            nulls: 'last'
+          }
+        }, { createdAt: 'desc' }],
         skip,
         take: limit,
         select: {
@@ -454,6 +460,7 @@ export class CaseStudiesService {
     }
     if (updateCaseStudyDto.featured != null) {
       updateData.featured = updateCaseStudyDto.featured;
+      updateData.featuredAt = new Date();
     }
     if (updateCaseStudyDto.status != null) {
       updateData.status = updateCaseStudyDto.status;
@@ -629,6 +636,7 @@ export class CaseStudiesService {
       where: { id: BigInt(id) },
       data: {
         featured: !existingCaseStudy.featured,
+        featuredAt: !existingCaseStudy.featured ? new Date() : null,
       },
       include: {
         category: true,

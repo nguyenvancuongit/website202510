@@ -13,7 +13,7 @@ import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { Separator } from "../ui/separator";
 
-const CaseStudyCard = ({ caseStudy }: { caseStudy: CaseStudy }) => {
+const CaseStudyCard = ({ caseStudy, lastCard }: { caseStudy: CaseStudy, lastCard: boolean }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { isMobile } = useMedia();
 
@@ -32,7 +32,7 @@ const CaseStudyCard = ({ caseStudy }: { caseStudy: CaseStudy }) => {
       onClick={handleCardClick}
     >
       <Card
-        className={`w-full max-w-[420px] h-[461px] p-0 rounded-xl border-transparent border-none md:border md:border-solid group shadow-none md:border-[#e1e7ee] md:hover:bg-[linear-gradient(180deg,rgba(3,129,255,1)_0%,rgba(103,179,255,1)_100%)] md:hover:border-transparent transition-all duration-500 ease-in-out relative overflow-hidden ${isExpanded ? "h-auto border-transparent" : ""
+        className={`w-full max-w-[420px] sm:h-[461px] h-auto p-0 rounded-xl border-transparent border-none md:border md:border-solid group shadow-none md:border-[#e1e7ee] md:hover:bg-[linear-gradient(180deg,rgba(3,129,255,1)_0%,rgba(103,179,255,1)_100%)] md:hover:border-transparent transition-all duration-500 ease-in-out relative overflow-hidden ${isExpanded ? "h-auto border-transparent" : ""
           }`}
       >
         {/* Default state - visible when not expanded on mobile, hidden on hover for desktop */}
@@ -61,14 +61,15 @@ const CaseStudyCard = ({ caseStudy }: { caseStudy: CaseStudy }) => {
         {/* Expanded state for mobile - shows image on top with blue content below */}
         <CardContent
           className={cn(
-            "md:hidden p-0 flex flex-col border-b-[1px] border-dashed h-100"
+            "md:hidden p-0 flex flex-col border-dashed sm:h-100 h-auto",
+            lastCard ? "border-b-0" : "border-b"
           )}
         >
-          <div className="relative max-h-100 h-100">
+          <div className="relative sm:h-full h-auto">
             {/* image and description */}
             <div
               className={cn(
-                "absolute inset-0 flex flex-col gap-3 transition-opacity duration-200 ease-in-out",
+                "relative sm:absolute inset-0 flex flex-col gap-3 transition-opacity duration-200 ease-in-out",
                 isExpanded ? "opacity-0" : "opacity-100"
               )}
             >
@@ -90,7 +91,7 @@ const CaseStudyCard = ({ caseStudy }: { caseStudy: CaseStudy }) => {
             {/* Blue content section */}
             <div
               className={cn(
-                "absolute inset-0 bg-[#4A8FE7] p-6 rounded-xl flex flex-col justify-between transition-opacity duration-500 ease-in-out overflow-auto",
+                " absolute inset-0 bg-[#4A8FE7] p-6 rounded-xl flex flex-col justify-between transition-opacity duration-500 ease-in-out overflow-auto",
                 isExpanded ? "opacity-100" : "opacity-0"
               )}
             >
@@ -142,7 +143,7 @@ const CaseStudyCard = ({ caseStudy }: { caseStudy: CaseStudy }) => {
                 isExpanded ? "flex" : "hidden"
               )}
             >
-              <span className=" font-normal text-sm">了解更多</span>
+              <span className=" font-normal sm:text-sm">了解更多</span>
               <SystemGuideIcon
                 className={cn("text-[#1C88F9] [&_path]:stroke-[#1C88F9]")}
               />

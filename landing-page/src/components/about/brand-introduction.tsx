@@ -84,7 +84,7 @@ export default function BrandIntroduction() {
         >
           <CarouselContent>
             {features.map((feature, index) => (
-              <CarouselItem key={index} className="basis-[80%]">
+              <CarouselItem key={index} className="basis-[80%] h-[352px] sm:pl-4 pl-5">
                 <FeatureCard key={index} feature={feature} />
               </CarouselItem>
             ))}
@@ -98,19 +98,19 @@ export default function BrandIntroduction() {
 const FeatureCard = ({ feature }: { feature: (typeof features)[number] }) => {
   return (
     <Card
-      className="border-none shadow-none rounded-3xl group"
+      className="border-none shadow-none sm:rounded-3xl rounded-2xl group sm:py-6 pb-0 sm:h-auto h-full"
       style={{ background: feature.gradient }}
     >
-      <CardContent className="p-6 flex flex-col h-full">
+      <CardContent className="sm:px-6 sm:py-6 pb-0 pt-0 px-5 flex flex-col h-full m-0">
         <div className="mb-4">
-          <h3 className="text-lg md:text-2xl text-charcoal mb-7">
+          <h3 className="text-lg md:text-2xl text-charcoal sm:mb-7 mb-3">
             {feature.title}
           </h3>
           <p className="text-dark-blue-grey text-base leading-relaxed">
             {feature.description}
           </p>
         </div>
-        <div className="mt-auto h-48 relative overflow-hidden">
+        <div className="mt-auto sm:h-48 h-30 relative overflow-hidden">
           <Image
             src={feature.image}
             alt={feature.title}
