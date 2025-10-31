@@ -63,15 +63,15 @@ export default async function TerminalPage() {
       <div className="min-h-screen bg-white pt-20">
         <Banner
           imageSrc="/images/terminal/banner.svg"
-          title="智慧生涯自助探索终端"
-          description="多元化的产品体系，搭载智能生涯探索系统，为学生打造操作便捷、可满足多场景使用的生涯探索工具。"
+          title="智能生涯自助探索终端"
+          description="多元化的产品体系，搭载智能生涯探索系统，为学生打造操作便捷、满足多场景使用的生涯探索工具。"
           buttonText="合作咨询"
           customClassNameText="!text-[#070F1B] sm:!text-white sm:w-full w-4/5"
           className="justify-start"
           objectPosition="40%"
         />
         <BannerService
-          title="自助终端设备总览"
+          title="智能探索，触手可及"
           img="/images/terminal/banner-service.svg"
           className="pt-10 md:pt-[118px] pb-10 md:pb-50"
         />

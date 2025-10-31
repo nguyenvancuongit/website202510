@@ -9,7 +9,7 @@ import ProductTabs from "@/components/common/product-tabs";
 const tabs = [
   {
     icon: "/images/terminal/feature/icon1.svg",
-    title: "自助式生涯探索机",
+    title: "生涯自助探索一体机",
     image: "/images/products/three-features/feature1.svg",
   },
   {
@@ -19,15 +19,15 @@ const tabs = [
   },
   {
     icon: "/images/terminal/feature/icon3.svg",
-    title: "一体化生涯探索放松椅",
+    title: "卧式生涯自主探索终端",
     image: "/images/products/three-features/feature3.svg",
   },
 ];
 const platforms = [
   {
-    title: "自助式生涯探索机",
+    title: "生涯自助探索一体机",
     description:
-      "自助式生涯探索机面向初高中学生，搭载大屏幕触控体机，集成“测试探索、升学指导、职业规划”三大核心模块，借助AI与教育大数据，为学生生涯发展保驾护航，助力学校实现科学化管理。",
+      "生涯自助探索一体机面向初高中学生，搭载大屏幕触控体机，集成“测试探索、升学指导、职业规划”三大核心模块，借助AI与教育大数据，为学生生涯发展保驾护航，助力学校实现科学化管理。",
     image: "/images/terminal/feature/feature1.svg",
     imageMobile: "/images/products/three-features/feature1-mobile.svg",
   },
@@ -41,7 +41,7 @@ const platforms = [
   {
     title: "一体化生涯探索放松座椅",
     description:
-      "AI智能静音生涯探索舱面向中学生群体，将AI技术、智能设备、静音舱体的有机结合，形成学生专属的生涯指导空间，帮助学生在安静、私密的环境下沉浸式开展生涯探索和学业指导。",
+      "创新融合放松按摩放松与智能生涯探索功能，让学生在舒适的状态下完成职业测评、兴趣探索和学业规划。告别传统生涯探索的站立疲劳，让每一次思考都轻松愉悦。",
     image: "/images/terminal/feature/feature3.svg",
     imageMobile: "/images/products/three-features/feature3-mobile.svg",
   },
