@@ -34,7 +34,7 @@ export default function BannerService() {
           </motion.div>
 
           <motion.div
-            className="text-dark-blue-grey leading-6 md:leading-normal sm:text-base text-sm font-normal max-w-xl"
+            className="text-dark-blue-grey leading-6 md:leading-normal sm:text-base text-sm font-normal max-w-xl text-justify"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.8 }}
