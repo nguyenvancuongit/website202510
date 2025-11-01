@@ -70,7 +70,7 @@ const GuidanceCenterIntroduction = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.0, delay: 0.3, ease: "easeOut" }}
       >
-        帮助学生实现个性化成长，提升生涯规划能力、心理健康水平和学业发展质量,适应新高考改革和未来社会需求
+        帮助学生实现个性化成长，提升生涯规划能力、心理健康水平和学业发展质量，适应新高考改革和未来社会需求。
       </motion.p>
 
       <motion.div

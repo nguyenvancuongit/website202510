@@ -35,7 +35,7 @@ export default function GuidanceCenterPage() {
       <div className="min-h-screen overflow-x-hidden md:overflow-visible">
         <Banner
           title="学生发展指导中心解决方案"
-          description={'科技赋能，助力学生自我探索、拓展视野，实现“家校共育"'}
+          description={"科技赋能，助力学生自我探索、拓展视野，实现“家校共育”"}
           imageSrc="/images/solutions/guidance-center/banner.svg"
           customClassNameText="sm:!text-white !text-[#070F1B]"
         />
@@ -43,7 +43,7 @@ export default function GuidanceCenterPage() {
           classNameText="leading-[34px]"
           title="方案背景"
           description={
-            "根据教育2024年调研数据显示，高达83%的中学缺乏系统化发展指导体系；新高考选科盲选率达61%，学校硬件投入与软件服务相割裂。而本方案旨在帮助学校研究梳理生涯教育中存在的问题，补足缺位环节，提升学校的发展指导能力，打造学生发展指导中心，形成具有本校特色的生涯指导体系。"
+            "根据2024年调研数据显示，高达83%的中学缺乏系统化发展指导体系，；新高考选科盲选率达61%，学校硬件投入与软件服务相割裂。而本方案旨在帮助学校研究梳理生涯教育中存在的问题，补足缺位环节，提升学校的发展指导能力，打造学生发展指导中心，形成具有本校特色的生涯指导体系。"
           }
         />
         <ContactInformationSection />
