@@ -38,7 +38,7 @@ export default function TeacherTrainingPage() {
         <TestimonialsSection
           title="方案背景"
           description={[
-            "国家新高考改革推动生涯教育成为刚需，然而全国中学专职生涯教师的师生比例仅为1:1200，远低于1:300的国际标准;部分县域中学，具备专业资质的指导老师覆盖率不足20%，优质师资供给不足制约教育现代化进程。",
+            "国家新高考改革推动生涯教育成为刚需，然而全国中学专职生涯教师的师生比例仅为1:1200，远低于1:300的国际标准。部分县域中学具备专业资质的指导老师覆盖率不足20%，优质师资供给不足制约教育现代化进程。",
           ]}
         />
         <TeacherTrainingIntroductionSection />
