@@ -11,8 +11,8 @@ import {
 const brandValues = [
   { title: "品牌使命", content: "科技赋能育人，护成长，筑未来" },
   { title: "品牌口号", content: "发现自我，成长有象" },
-  { title: "品牌主张", content: "成长有光 适应成功" },
-  { title: "品牌价值观", content: "科学为本 温度优先" },
+  { title: "品牌主张", content: "成长有光 成长有光 造炬成阳" },
+  { title: "品牌价值观", content: "科学为本 温度为先 温度优先" },
 ];
 
 const features = [
@@ -48,7 +48,7 @@ export default function BrandIntroduction() {
         </h2>
         <div className="mb-14 space-y-4">
           <p className="text-dark-blue-grey leading-relaxed text-sm md:text-base">
-            &ldquo;象导生涯&rdquo;隶属于纬英数字科技(广州)有限公司(简称为纬英科技)，公司成立于2019年，总部位于广州，是国内领先的学生发展指导与生涯教育整体解决方案服务商。公司业务覆盖生涯教育咨询与规划服务、综合素质教育、国际教育咨询服务、海外教育服务等领域。
+            “象导生涯”隶属于纬英数字科技（广州）有限公司（简称为“纬英科技”）。纬英科技成立于2019年，总部位于广州，是国内领先的学生发展指导与生涯教育整体解决方案服务商。公司业务覆盖生涯教育咨询与规划服务、综合素质教育、国际教育咨询服务、海外教育服务等领域。
           </p>
           <p className="text-dark-blue-grey leading-relaxed text-sm md:text-base">
             象导生涯致力于运用数据科学的力量赋能生涯教育的发展，为教育管理者、学校、老师、学生与家长提供全方位的优质服务。象导生涯专注于为学校、教育机构及企业提供&ldquo;测评一课程一活动一咨询&rdquo;全链条服务，构筑了从工具、平台到内容的多元化教育生态，以满足从小学到大学，以及大学以后各年龄段人群的个性化学习需求，致力于用科技赋能生涯教育，助力每个学生找到个性化成长路径。
