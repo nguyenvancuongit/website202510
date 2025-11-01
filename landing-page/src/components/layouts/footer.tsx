@@ -99,8 +99,7 @@ export function Footer() {
                   height={18}
                 />
                 <span>
-                  Room 501, Building 4, Nanfang Tongchuanghui, 289 Guangzhou
-                  Avenue Middle, Yuexiu District, Guangzhou, Guangdong Province
+                  广东省广州市越秀区广州大道中289号南方同创汇4号楼501室
                 </span>
               </div>
             </div>
