@@ -65,7 +65,7 @@ export default function EnterprisePage() {
       <div className="min-h-screen overflow-x-hidden md:overflow-visible">
         <Banner
           title="企业人才发展解决方案"
-          description="利用数字技术提升员工技能、增强工作效率和创新力"
+          description="数字科技让生涯课堂“动起来”"
           textColor="white"
           hasOverlay
           imageSrc="/images/solutions/enterprise/banner.png"
@@ -73,10 +73,10 @@ export default function EnterprisePage() {
         <TestimonialsSection
           title="方案背景"
           description={[
-            "数字经济时代正在势不可挡地向前发展，推动着企业数字化转型进程，也深度影响着HR领域，员工的能力优势、职业兴趣与内在动力直接影响组织效能与人才留存率，在此当景下，这些问题成为企业数字化转型进程中新的命题:",
-            "①如何通过技术赋能未来人力资源管理?",
-            "②如何通过科技让人力资源管理更有温度?",
-            "③如何让人力资源管理适配数字经济时代的发展趋势?",
+            "新高考改革：选科组合达12-20种，学生需提前了解专业与职业关联（如物理+化学+生物对应医学/工程类）。",
+            "《国家中长期教育改革纲要》：明确要求高中阶段开展生涯教育，2025年前实现全国普及。",
+            "核心素养培养：生涯规划能力被纳入“中国学生发展核心素养”中的自主发展维度。",
+            "然而在现实情况中，往往存在学生不清楚大学专业与未来职业的关系，选科盲目导致高考志愿填报失误的情况；而在学校端，由于教师缺乏系统化课程资源，备课耗时、传统“填鸭式”生涯讲座效果差，学生参与度极低。",
           ]}
         />
         <SolutionIntroduction

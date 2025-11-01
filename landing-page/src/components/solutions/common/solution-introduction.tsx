@@ -62,7 +62,7 @@ const SolutionIntroduction = ({
         </motion.h2>
         {description && (
           <motion.p
-            className="text-sm md:text-xl leading-6 font-normal text-medium-dark-blue-grey mt-3.5 sm:mt-6"
+            className="text-sm md:text-xl leading-6 font-normal text-medium-dark-blue-grey mt-3.5 sm:mt-6 text-justify"
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
