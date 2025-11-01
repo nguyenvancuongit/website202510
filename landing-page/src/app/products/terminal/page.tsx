@@ -20,7 +20,7 @@ const partners = [
     logo: "/images/products/partners/logo2.svg",
   },
   {
-    name: "广州市真光中学",
+    name: "广州市第三中学",
     logo: "/images/products/partners/logo4.svg",
   },
   {
@@ -28,11 +28,11 @@ const partners = [
     logo: "/images/products/partners/logo9.svg",
   },
   {
-    name: "广州市美术高级中学",
+    name: "广州华美英语实验学校",
     logo: "/images/products/partners/logo11.svg",
   },
   {
-    name: "佛山市南海区桂城高级中学",
+    name: "佛山市南海外国语高级中学",
     logo: "/images/products/partners/logo12.svg",
   },
   {

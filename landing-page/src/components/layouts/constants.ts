@@ -2,7 +2,7 @@ import { MenuItemProps } from "./header";
 
 export const staticProductMapping: Record<string, MenuItemProps> = {
   "cloud-platform": {
-    label: "学生发展指导智慧云平台",
+    label: "学生发展指导智慧平台",
     href: "/products/cloud-platform",
     subtitle: "赋能生涯教育数智化建设",
     image: "/icons/header/product/sass.svg",

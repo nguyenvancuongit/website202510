@@ -21,7 +21,9 @@ const platforms = [
   {
     title: "提供多样化工具，引导学生主动探索、自主成长",
     description:
-      '提供包含生涯理论知识、实践操作指南、专业测评工具等在内的"生涯工具箱 <br />  <br /> 建立涵盖院校信息、专业介绍、职业发展等详实数据的"生涯信息库 <br/> <br /> 通过智能化引导，帮助学生主动探索自我，实现自主成长',
+     `建立涵盖院校信息、专业介绍、职业发展等详实数据的  <br />  <br />
+     “生涯信息库”，通过智能化引导，帮助学生主动探索自我，  <br />  <br />
+     实现自主成长，建立自己的生涯成长档案。  <br />  <br />  `,
     image: "/images/products/three-features/feature-1.png",
     imageMobile: "/images/products/three-features/feature1-mobile.svg",
   },

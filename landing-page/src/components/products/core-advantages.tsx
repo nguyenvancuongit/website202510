@@ -103,7 +103,7 @@ export default function CoreAdvantages() {
             transition={{ duration: 1.0, ease: "easeOut" }}
             className="font-bold text-charcoal text-2xl md:text-[56px] tracking-[0] leading-normal mb-2"
           >
-            生涯数据看板
+            生涯数据可视化看板
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -113,7 +113,7 @@ export default function CoreAdvantages() {
             className="text-dark-blue-grey text-sm sm:text-xl font-normal leading-relaxed mt-5 sm:mt-10"
             style={{ willChange: "opacity" }}
           >
-            以&quot;数据&quot;为核心，用&quot;数据&quot;来说话，生涯数据看板为全校学生发展指导工作的过程管理、进度和质量监督提供分析研判的依据。
+            以&quot;数据&quot;为核心，用&quot;数据&quot;来说话，生涯数据可视化看板为全校学生发展指导工作的过程管理、进度和质量监督提供分析研判的依据。
           </motion.p>
         </div>
       </div>
