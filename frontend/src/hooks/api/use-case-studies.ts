@@ -26,6 +26,7 @@ export interface CaseStudy {
   content: string;
   status: CaseStudyStatus;
   featured: boolean;
+  featured_at: boolean;
   category_id: string;
   customer_name?: string;
   web_thumbnail_media_id: number;
