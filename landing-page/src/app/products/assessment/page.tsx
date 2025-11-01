@@ -73,13 +73,13 @@ const partners = [
 const advantages = [
   {
     title: "游戏化设计，学生参与度",
-    description: "心理学线上线下游戏，从玩乐中启迪智慧",
-    image: "/images/products/advantages/advantages-1.svg",
+    description: "线上线下游戏，从玩乐中启迪智慧",
+    image: "/images/products/advantages/advantages-1.png",
   },
   {
     title: "科技赋能，执行效率高",
-    description: "智能终端+数字化测评，单场活动支持约3000人",
-    image: "/images/products/advantages/advantages-2.svg",
+    description: "智能终端+智能终端+数字化测评，单场活动支持约5000人",
+    image: "/images/products/advantages/advantages-2.png",
   },
   {
     title: "经验丰富，教育效果显著",
@@ -106,7 +106,7 @@ export default async function AssessmentPage() {
           className="justify-start"
           imageSrc="/images/assessment/banner.svg"
           title="生涯探索游园会"
-          description="数字科技让生涯课堂“动起来”"
+          description="通过寓教于乐的游戏，学生在自我探索中连接外部世界，启蒙生涯规划。"
           buttonText="了解详情"
         />
         <BannerService />
