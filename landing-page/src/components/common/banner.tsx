@@ -24,6 +24,7 @@ interface BannerProps {
   containerClassName?: string;
   className?: string;
   objectPosition?: string;
+  customClassNameTextTitle?: string;
 }
 
 // Animation variants for fade in from left
@@ -66,6 +67,7 @@ export default function Banner({
   containerClassName = "",
   className: innerClassName = "",
   objectPosition = "",
+  customClassNameTextTitle = ""
 }: BannerProps) {
   return (
     <section className="relative h-[466px] md:h-[660px]">
@@ -100,6 +102,7 @@ export default function Banner({
               className={cn(
                 "text-2xl md:text-4xl lg:text-6xl font-bold leading-tight text-balance mb-4 lg:mb-6",
                 customClassNameText,
+                customClassNameTextTitle,
                 {
                   "text-white": textColor === "white",
                   "text-[#070F1B]": textColor === "black",
