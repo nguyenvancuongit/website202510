@@ -13,12 +13,6 @@ export const staticProductMapping: Record<string, MenuItemProps> = {
     subtitle: "助力学生课余自助探索",
     image: "/icons/header/product/terminal.svg",
   },
-  "games": {
-    label: "生涯活动与服务",
-    href: "/products/games",
-    subtitle: "校园大型生涯探索活动",
-    image: "/icons/header/product/career.svg",
-  },
   "assessment": {
     label: "企业人才发展与数智化服务",
     href: "/products/assessment",

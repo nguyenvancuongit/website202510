@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -11,6 +10,8 @@ export default function ProductTabs({
   tabs,
   platforms,
   keepTabs = false,
+  activeTab,
+  setActiveTab,
 }: {
   tabs: { icon: string; title: string }[]
   platforms: {
@@ -20,8 +21,9 @@ export default function ProductTabs({
     imageMobile?: string
   }[]
   keepTabs?: boolean
+  activeTab: number
+  setActiveTab: (index: number) => void
 }) {
-  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <>

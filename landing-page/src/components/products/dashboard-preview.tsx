@@ -5,15 +5,15 @@ import Image from "next/image";
 
 export default function DashboardPreview() {
   return (
-    <section className="relative sm:pb-0 pb-15">
+    <section className="relative md:pb-10 sm:pb-0 pb-15 mx-0 md:mx-auto max-w-7xl">
       <Image
         src="/images/products/banner-dashboard.svg"
         alt="Dashboard Preview"
         width={1920}
         height={800}
-        className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 media inset-0 w-full h-full object-cover"
+        className="hidden md:block relative media inset-0 w-full h-full object-cover z-0"
       />
-      <div className="hidden max-w-7xl h-[calc(100vh-80px)] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 md:flex items-center">
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 md:flex items-center">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0 }}

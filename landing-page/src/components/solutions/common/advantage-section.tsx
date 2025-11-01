@@ -202,9 +202,9 @@ const SolutionAdvantagesSection = ({
               <Image
                 alt={advantage.title}
                 src={advantage.image}
-                className="object-cover"
-                fill
-                sizes="645px"
+                className="object-contain h-[424px]"
+                width={645}
+                height={424}
                 priority={index === 0} // Prioritize first image for loading
               />
             </div>

@@ -211,7 +211,7 @@ const ClientCasesSection = ({ caseStudies }: Props) => {
         )}
       </div>
       <Link href="/case-study">
-        <GradientButton className="mt-12 mx-auto">
+        <GradientButton className="mt-10 mx-auto">
           <span>更多案例</span>
           <Image
             alt="system guide"

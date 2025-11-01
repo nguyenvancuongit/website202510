@@ -1,3 +1,6 @@
+"use client";
+import { useState } from "react";
+
 import ProductTabs from "@/components/common/product-tabs";
 
 const tabs = [
@@ -48,10 +51,11 @@ const platforms = [
   },
 ];
 export default function ThreeFeatures() {
+  const [activeTab, setActiveTab] = useState(0);
   return (
     <section className="py-10 sm:py-16 bg-white sm:bg-gradient-to-b from-white to-[#F0F9FF]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ProductTabs tabs={tabs} platforms={platforms} keepTabs />
+        <ProductTabs tabs={tabs} platforms={platforms} keepTabs activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     </section>
   );
