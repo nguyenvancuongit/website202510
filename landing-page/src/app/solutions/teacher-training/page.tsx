@@ -20,7 +20,7 @@ const advantages = [
   {
     title: "师资力量",
     description: "资深的师资力量，拥有丰富的教学经验",
-    image: "/images/solutions/teacher-training/advantages/advantages-3.png",
+    image: "/images/solutions/teacher-training/advantages/advantages-3.jpg",
   },
 ];
 
